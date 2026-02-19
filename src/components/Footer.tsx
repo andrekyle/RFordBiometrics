@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="border-t border-border bg-card/50 px-4 py-3 sm:py-4">
       {/* Mobile: 2-column layout */}
-      <div className="flex sm:hidden justify-between items-start text-[11px] text-muted-foreground/60">
+      <div className="flex sm:hidden justify-between items-start text-[15px] text-muted-foreground/60">
         <div className="flex flex-col gap-0.5">
           <span>RJF Investments</span>
           <span>2008 / 023862 / 23</span>
@@ -19,7 +19,7 @@ const Footer = () => {
           </a>
         </div>
       </div>
-      <div className="mt-2 text-center text-[11px] text-muted-foreground/60 sm:hidden">
+      <div className="mt-2 text-center text-[15px] text-muted-foreground/60 sm:hidden">
         © {currentYear} RJF Investments. All rights reserved.
       </div>
 

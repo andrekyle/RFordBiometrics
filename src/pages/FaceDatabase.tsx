@@ -175,7 +175,7 @@ const FaceDatabase = () => {
             variant="outline"
             size="sm"
             onClick={() => navigate("/face-recognition")}
-            className="font-mono text-[10px] sm:text-xs h-7 sm:h-8 px-2 sm:px-3 shrink-0"
+            className="font-mono text-[14px] sm:text-xs h-7 sm:h-8 px-2 sm:px-3 shrink-0"
           >
             <ArrowLeft className="h-3 w-3 mr-1" />
             BACK
@@ -184,7 +184,7 @@ const FaceDatabase = () => {
             <h1 className="font-mono text-sm sm:text-lg font-bold tracking-wider text-foreground">
               FACE DATABASE
             </h1>
-            <p className="text-[10px] sm:text-sm text-muted-foreground truncate">
+            <p className="text-[14px] sm:text-sm text-muted-foreground truncate">
               Manage captured faces and identities
             </p>
           </div>
@@ -192,7 +192,7 @@ const FaceDatabase = () => {
         <div className="flex items-center gap-2 sm:gap-3">
           <Badge
             variant="outline"
-            className="bg-primary/15 text-primary border-primary/30 font-mono text-[10px] sm:text-xs"
+            className="bg-primary/15 text-primary border-primary/30 font-mono text-[14px] sm:text-xs"
           >
             <Database className="h-3 w-3 mr-1" />
             {filteredFaces.length} / {faces.length}
@@ -203,7 +203,7 @@ const FaceDatabase = () => {
                 <Button
                   variant="destructive"
                   size="sm"
-                  className="font-mono text-[10px] sm:text-xs h-7 sm:h-8 px-2 sm:px-3"
+                  className="font-mono text-[14px] sm:text-xs h-7 sm:h-8 px-2 sm:px-3"
                 >
                   <Trash2 className="h-3 w-3 mr-1" />
                   CLEAR ALL
@@ -290,7 +290,7 @@ const FaceDatabase = () => {
                 <div className="absolute top-2 right-2">
                   <Badge
                     variant="outline"
-                    className="bg-primary/90 text-primary-foreground border-primary text-[11px]"
+                    className="bg-primary/90 text-primary-foreground border-primary text-[15px]"
                   >
                     {face.confidence}%
                   </Badge>
@@ -302,7 +302,7 @@ const FaceDatabase = () => {
                     <p className="font-mono text-xs text-muted-foreground truncate">
                       {face.id}
                     </p>
-                    <p className="text-[11px] text-muted-foreground">
+                    <p className="text-[15px] text-muted-foreground">
                       {new Date(face.timestamp).toLocaleString()}
                     </p>
                   </div>
@@ -372,7 +372,7 @@ const FaceDatabase = () => {
             </h2>
             <Badge
               variant="outline"
-              className="bg-primary/15 text-primary border-primary/30 font-mono text-[10px] sm:text-xs"
+              className="bg-primary/15 text-primary border-primary/30 font-mono text-[14px] sm:text-xs"
             >
               {videos.length} CLIP{videos.length !== 1 ? "S" : ""}
             </Badge>
@@ -383,7 +383,7 @@ const FaceDatabase = () => {
                 <Button
                   variant="destructive"
                   size="sm"
-                  className="font-mono text-[10px] sm:text-xs h-7 sm:h-8 px-2 sm:px-3"
+                  className="font-mono text-[14px] sm:text-xs h-7 sm:h-8 px-2 sm:px-3"
                 >
                   <Trash2 className="h-3 w-3 mr-1" />
                   CLEAR ALL VIDEOS
@@ -439,7 +439,7 @@ const FaceDatabase = () => {
                     <p className="font-mono text-xs text-foreground font-medium">
                       Recording {videos.length - index}
                     </p>
-                    <p className="text-[10px] text-muted-foreground">
+                    <p className="text-[14px] text-muted-foreground">
                       {new Date(video.timestamp).toLocaleString()} • {formatDuration(video.duration)} • {video.size}
                     </p>
                   </div>
@@ -448,7 +448,7 @@ const FaceDatabase = () => {
                       size="sm"
                       variant="outline"
                       onClick={() => downloadVideo(video.videoData, index)}
-                      className="font-mono text-[10px] h-7 px-2 gap-1"
+                      className="font-mono text-[14px] h-7 px-2 gap-1"
                     >
                       <Download className="h-3 w-3" strokeWidth={1.5} />
                       SAVE
@@ -495,10 +495,10 @@ const FaceDatabase = () => {
         <div className="flex items-start gap-2 sm:gap-3">
           <AlertCircle className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0 mt-0.5" />
           <div>
-            <h3 className="font-mono text-[11px] sm:text-xs text-primary font-semibold mb-1">
+            <h3 className="font-mono text-[15px] sm:text-xs text-primary font-semibold mb-1">
               ADMIN NOTICE
             </h3>
-            <p className="text-[11px] sm:text-xs text-muted-foreground">
+            <p className="text-[15px] sm:text-xs text-muted-foreground">
               All faces and videos are stored locally in your browser's IndexedDB. For production use,
               data should be synced to a secure cloud database with proper encryption and
               access controls. Integration with SA Home Affairs and SAPS databases requires

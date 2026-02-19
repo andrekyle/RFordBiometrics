@@ -88,7 +88,7 @@ function DriverMarker({
         
         {/* Driver name label - always visible */}
         <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-0.5 sm:mt-1 pointer-events-none">
-          <div className="bg-white text-black text-[10px] sm:text-xs font-medium rounded px-1.5 py-0.5 sm:px-2 whitespace-nowrap shadow-lg border border-gray-200">
+          <div className="bg-white text-black text-[14px] sm:text-xs font-medium rounded px-1.5 py-0.5 sm:px-2 whitespace-nowrap shadow-lg border border-gray-200">
             {driver.name.split(' ')[0]}
           </div>
         </div>

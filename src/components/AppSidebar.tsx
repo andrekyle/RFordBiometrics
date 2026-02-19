@@ -50,13 +50,13 @@ export function AppSidebar() {
         <img src="/biologo.png" alt="BioSentinel" className="h-10 w-10 sm:h-12 sm:w-12 object-contain shrink-0" />
         <div className="min-w-0">
           <h1 className="text-sm sm:text-base font-medium text-foreground">BioSentinel</h1>
-          <p className="text-[11px] sm:text-xs text-muted-foreground">Security Platform</p>
+          <p className="text-[15px] sm:text-xs text-muted-foreground">Security Platform</p>
         </div>
       </div>
 
       <SidebarContent className="px-3 sm:px-4 py-4 sm:py-6">
         <SidebarGroup>
-          <SidebarGroupLabel className="text-[11px] sm:text-xs font-medium text-muted-foreground px-2 sm:px-3 mb-2 sm:mb-3 uppercase tracking-wider">Menu</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-[15px] sm:text-xs font-medium text-muted-foreground px-2 sm:px-3 mb-2 sm:mb-3 uppercase tracking-wider">Menu</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu className="space-y-1 sm:space-y-2">
               {navItems.map((item) => (

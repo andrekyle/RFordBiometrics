@@ -22,7 +22,7 @@ const Incidents = () => {
           <h1 className="text-xl sm:text-[28px] font-normal text-foreground mb-1">Incident Center</h1>
           <p className="text-xs sm:text-sm text-muted-foreground">Facial recognition &amp; incident management</p>
         </div>
-        <Badge variant="destructive" className="text-[11px] sm:text-xs w-fit">
+        <Badge variant="destructive" className="text-[15px] sm:text-xs w-fit">
           {incidents.filter(i => i.status !== "resolved").length} ACTIVE
         </Badge>
       </div>
@@ -45,18 +45,18 @@ const Incidents = () => {
                     <Icon className="h-4 w-4 sm:h-5 sm:w-5 text-destructive" strokeWidth={1} />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-[11px] sm:text-xs text-muted-foreground font-mono">{inc.id}</p>
+                    <p className="text-[15px] sm:text-xs text-muted-foreground font-mono">{inc.id}</p>
                     <p className="text-xs sm:text-sm font-medium text-foreground capitalize">{inc.type}</p>
                   </div>
                 </div>
-                <Badge variant={inc.status === "open" ? "destructive" : inc.status === "investigating" ? "warning" : "default"} className="text-[11px] sm:text-xs shrink-0">
+                <Badge variant={inc.status === "open" ? "destructive" : inc.status === "investigating" ? "warning" : "default"} className="text-[15px] sm:text-xs shrink-0">
                   {inc.status}
                 </Badge>
               </div>
 
               <p className="text-xs sm:text-sm text-foreground mb-2 sm:mb-3">{inc.description}</p>
 
-              <div className="space-y-1 sm:space-y-1.5 text-[11px] sm:text-xs text-muted-foreground">
+              <div className="space-y-1 sm:space-y-1.5 text-[15px] sm:text-xs text-muted-foreground">
                 <div className="flex items-center gap-1.5 sm:gap-2">
                   <MapPin className="h-3 w-3 sm:h-4 sm:w-4 shrink-0" strokeWidth={1} />
                   <span className="truncate">{inc.location}</span>
@@ -85,13 +85,13 @@ const Incidents = () => {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-2 gap-2 sm:gap-0">
           <div className="flex items-center gap-2">
             <Camera className="h-4 w-4 sm:h-5 sm:w-5 text-accent shrink-0" strokeWidth={1} />
-            <h3 className="text-[11px] sm:text-xs font-normal tracking-wider uppercase text-muted-foreground">Facial Recognition Status</h3>
+            <h3 className="text-[15px] sm:text-xs font-normal tracking-wider uppercase text-muted-foreground">Facial Recognition Status</h3>
           </div>
           <Button 
             size="sm" 
             variant="outline" 
             onClick={() => navigate("/face-recognition")}
-            className="text-[11px] sm:text-xs w-fit"
+            className="text-[15px] sm:text-xs w-fit"
           >
             OPEN LIVE CAMERA
           </Button>

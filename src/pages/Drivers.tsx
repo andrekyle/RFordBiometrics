@@ -227,7 +227,7 @@ const Drivers = () => {
             <thead>
               <tr className="border-b border-border">
                 {["Driver", "Status", "Zone", "Speed", "Last Seen"].map((h) => (
-                  <th key={h} className="p-2 sm:p-3 text-left text-[11px] sm:text-xs font-normal tracking-wider uppercase text-muted-foreground">{h}</th>
+                  <th key={h} className="p-2 sm:p-3 text-left text-[15px] sm:text-xs font-normal tracking-wider uppercase text-muted-foreground">{h}</th>
                 ))}
               </tr>
             </thead>
@@ -247,14 +247,14 @@ const Drivers = () => {
                     </Avatar>
                     <div className="min-w-0">
                       <p className="font-normal text-foreground text-xs sm:text-sm truncate">{d.name}</p>
-                      <p className="text-[11px] sm:text-xs text-muted-foreground font-light font-mono">{d.id}</p>
+                      <p className="text-[15px] sm:text-xs text-muted-foreground font-light font-mono">{d.id}</p>
                     </div>
                   </div>
                 </td>
                 <td className="p-2 sm:p-3">
                   <Badge 
                     variant={d.status === "active" ? "default" : d.status === "idle" ? "warning" : "secondary"}
-                    className="inline-flex items-center gap-1 sm:gap-1.5 text-[11px] sm:text-xs"
+                    className="inline-flex items-center gap-1 sm:gap-1.5 text-[15px] sm:text-xs"
                   >
                     <span className={cn(
                       "h-1.5 w-1.5 rounded-full",
@@ -268,14 +268,14 @@ const Drivers = () => {
                 <td className="p-2 sm:p-3">
                   <div className="flex items-center gap-1 sm:gap-1.5 text-muted-foreground">
                     <MapPin className="h-3 w-3 sm:h-4 sm:w-4 shrink-0" strokeWidth={1} />
-                    <span className="font-light text-[11px] sm:text-xs truncate">{d.zone}</span>
+                    <span className="font-light text-[15px] sm:text-xs truncate">{d.zone}</span>
                   </div>
                 </td>
                 <td className="p-2 sm:p-3">
                   <div className="flex items-center gap-1 sm:gap-1.5 font-mono">
                     <Gauge className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground shrink-0" strokeWidth={1} />
                     <span className={cn(
-                      "text-[11px] sm:text-xs",
+                      "text-[15px] sm:text-xs",
                       d.speed > 35 ? "text-warning font-normal" : "text-foreground font-normal"
                     )}>{d.speed} km/h</span>
                   </div>
@@ -283,7 +283,7 @@ const Drivers = () => {
                 <td className="p-2 sm:p-3">
                   <div className="flex items-center gap-1 sm:gap-1.5 text-muted-foreground">
                     <Clock className="h-3 w-3 sm:h-4 sm:w-4 shrink-0" strokeWidth={1} />
-                    <span className="font-light text-[11px] sm:text-xs">{d.lastSeen}</span>
+                    <span className="font-light text-[15px] sm:text-xs">{d.lastSeen}</span>
                   </div>
                 </td>
               </tr>
