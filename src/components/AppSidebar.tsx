@@ -12,6 +12,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarFooter,
+  useSidebar,
 } from "@/components/ui/sidebar";
 
 const navItems = [
@@ -25,8 +26,18 @@ const navItems = [
 
 export function AppSidebar() {
   const navigate = useNavigate();
+  const { setOpenMobile, isMobile } = useSidebar();
+
+  const handleNavClick = () => {
+    if (isMobile) {
+      setOpenMobile(false);
+    }
+  };
 
   const handleSignOut = async () => {
+    if (isMobile) {
+      setOpenMobile(false);
+    }
     try {
       // Sign out from Firebase (if user used Google sign-in)
       await logoutUser();
@@ -65,6 +76,7 @@ export function AppSidebar() {
                     <NavLink
                       to={item.url}
                       end
+                      onClick={handleNavClick}
                       className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 rounded-2xl text-xs sm:text-sm font-normal text-sidebar-foreground hover:bg-sidebar-accent transition-all"
                       activeClassName="bg-primary text-white shadow-lg"
                     >
