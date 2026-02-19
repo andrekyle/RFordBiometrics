@@ -215,6 +215,16 @@ const FaceRecognition = () => {
         const url = URL.createObjectURL(blob);
         const sizeInMB = (blob.size / (1024 * 1024)).toFixed(1);
         const finalDuration = Math.round((Date.now() - recordingStartTimeRef.current) / 1000);
+        const ext = mimeType.includes('mp4') ? 'mp4' : 'webm';
+        const filename = `biosentinel-${new Date().toISOString().slice(0, 19).replace(/:/g, '-')}.${ext}`;
+
+        // Auto-download to device
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
         
         setRecordedVideos((prev) => [
           {
@@ -227,8 +237,8 @@ const FaceRecognition = () => {
         ]);
 
         toast({
-          title: "✓ Video Saved",
-          description: `Recording saved (${sizeInMB} MB). Ready to play or download.`,
+          title: "✓ Video Downloaded",
+          description: `${filename} (${sizeInMB} MB) saved to your Downloads folder.`,
         });
       };
 
