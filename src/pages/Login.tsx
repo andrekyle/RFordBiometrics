@@ -208,6 +208,12 @@ const Login = () => {
           <Button
             variant="link"
             className="h-auto p-0 text-sm text-primary hover:text-primary/80"
+            onClick={() => {
+              toast({
+                title: "Registration Unavailable",
+                description: "Sign-up is currently disabled. Please use the demo credentials above to log in.",
+              });
+            }}
           >
             Sign up
           </Button>
