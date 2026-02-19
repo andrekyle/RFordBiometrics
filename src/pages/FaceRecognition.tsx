@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import * as faceapi from "face-api.js";
-import { Camera, Users, AlertCircle, CheckCircle, Loader2, Save, Database, Scan, AlertTriangle, X } from "lucide-react";
+import { Camera, Users, AlertCircle, CheckCircle, Loader2, Save, Database, Scan, AlertTriangle, X, Video, VideoOff, Download, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
@@ -39,6 +39,14 @@ const FaceRecognition = () => {
   const [matchingEnabled, setMatchingEnabled] = useState(true);
   const [faceMatches, setFaceMatches] = useState<FaceMatch[]>([]);
   const [fps, setFps] = useState(0);
+  const [isRecording, setIsRecording] = useState(false);
+  const [recordingDuration, setRecordingDuration] = useState(0);
+  const [recordedVideos, setRecordedVideos] = useState<{ url: string; timestamp: string; duration: number; size: string }[]>([]);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const recordedChunksRef = useRef<Blob[]>([]);
+  const recordingTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const recordingStartTimeRef = useRef<number>(0);
+  const recordingMimeTypeRef = useRef<string>('video/webm');
   const lastCaptureTime = useRef<number>(0);
   const lastFrameTime = useRef<number>(0);
   const frameCount = useRef<number>(0);
@@ -123,6 +131,11 @@ const FaceRecognition = () => {
   };
 
   const stopCamera = () => {
+    // Stop recording if active
+    if (isRecording) {
+      stopRecording();
+    }
+
     if (videoRef.current && videoRef.current.srcObject) {
       const stream = videoRef.current.srcObject as MediaStream;
       stream.getTracks().forEach((track) => track.stop());
@@ -140,6 +153,139 @@ const FaceRecognition = () => {
         description: "Face detection paused",
       });
     }
+  };
+
+  // Video recording functions
+  const getSupportedMimeType = () => {
+    const types = [
+      'video/webm;codecs=vp9',
+      'video/webm;codecs=vp8',
+      'video/webm',
+      'video/mp4',
+    ];
+    for (const type of types) {
+      if (MediaRecorder.isTypeSupported(type)) return type;
+    }
+    return '';
+  };
+
+  const startRecording = () => {
+    if (!videoRef.current || !videoRef.current.srcObject) return;
+
+    const stream = videoRef.current.srcObject as MediaStream;
+    
+    // Clone the stream so recording isn't killed when camera stops
+    const clonedStream = stream.clone();
+    recordedChunksRef.current = [];
+
+    const mimeType = getSupportedMimeType();
+    if (!mimeType) {
+      toast({
+        title: "Recording Not Supported",
+        description: "Your browser does not support video recording.",
+        variant: "destructive",
+      });
+      return;
+    }
+    recordingMimeTypeRef.current = mimeType;
+
+    try {
+      const recorder = new MediaRecorder(clonedStream, { mimeType });
+
+      recorder.ondataavailable = (event) => {
+        if (event.data && event.data.size > 0) {
+          recordedChunksRef.current.push(event.data);
+        }
+      };
+
+      recorder.onstop = () => {
+        // Stop cloned stream tracks
+        clonedStream.getTracks().forEach((track) => track.stop());
+
+        if (recordedChunksRef.current.length === 0) {
+          toast({
+            title: "Recording Empty",
+            description: "No video data was captured.",
+            variant: "destructive",
+          });
+          return;
+        }
+
+        const blob = new Blob(recordedChunksRef.current, { type: mimeType });
+        const url = URL.createObjectURL(blob);
+        const sizeInMB = (blob.size / (1024 * 1024)).toFixed(1);
+        const finalDuration = Math.round((Date.now() - recordingStartTimeRef.current) / 1000);
+        
+        setRecordedVideos((prev) => [
+          {
+            url,
+            timestamp: new Date().toLocaleTimeString(),
+            duration: finalDuration,
+            size: `${sizeInMB} MB`,
+          },
+          ...prev,
+        ]);
+
+        toast({
+          title: "✓ Video Saved",
+          description: `Recording saved (${sizeInMB} MB). Ready to play or download.`,
+        });
+      };
+
+      recorder.start(500); // Collect data every 500ms for more granular chunks
+      mediaRecorderRef.current = recorder;
+      recordingStartTimeRef.current = Date.now();
+      setIsRecording(true);
+      setRecordingDuration(0);
+
+      // Start duration timer
+      recordingTimerRef.current = setInterval(() => {
+        setRecordingDuration((prev) => prev + 1);
+      }, 1000);
+
+      toast({
+        title: "⏺ Recording Started",
+        description: "Video recording is active",
+      });
+    } catch (err) {
+      console.error("Recording error:", err);
+      // Stop cloned stream if recording failed to start
+      clonedStream.getTracks().forEach((track) => track.stop());
+      toast({
+        title: "Recording Failed",
+        description: "Could not start video recording.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const stopRecording = () => {
+    if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
+      mediaRecorderRef.current.stop();
+    }
+    mediaRecorderRef.current = null;
+    setIsRecording(false);
+
+    if (recordingTimerRef.current) {
+      clearInterval(recordingTimerRef.current);
+      recordingTimerRef.current = null;
+    }
+  };
+
+  const downloadVideo = (url: string, index: number) => {
+    const ext = recordingMimeTypeRef.current.includes('mp4') ? 'mp4' : 'webm';
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `biosentinel-recording-${new Date().toISOString().slice(0, 19).replace(/:/g, '-')}-${index}.${ext}`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+
+  const formatDuration = (seconds: number) => {
+    const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
+    const secs = (seconds % 60).toString().padStart(2, '0');
+    return `${mins}:${secs}`;
   };
 
   // Assess face quality for better captures
@@ -451,6 +597,15 @@ const FaceRecognition = () => {
             <Database className="h-3 w-3 mr-1" strokeWidth={1} />
             {totalStoredFaces} DB
           </Badge>
+          {isRecording && (
+            <Badge
+              variant="outline"
+              className="bg-destructive/15 text-destructive border-[1px] border-destructive/30 font-light text-[10px] sm:text-xs"
+            >
+              <Video className="h-3 w-3 mr-1" strokeWidth={1} />
+              REC {formatDuration(recordingDuration)}
+            </Badge>
+          )}
         </div>
       </div>
 
@@ -520,6 +675,20 @@ const FaceRecognition = () => {
                     {isCameraActive ? "STOP" : "START CAMERA"}
                   </Button>
                 )}
+                {isCameraActive && (
+                  <Button
+                    size="sm"
+                    variant={isRecording ? "destructive" : "outline"}
+                    onClick={isRecording ? stopRecording : startRecording}
+                    className="font-mono text-[10px] sm:text-xs h-7 sm:h-8 px-2 sm:px-3 gap-1"
+                  >
+                    {isRecording ? (
+                      <><VideoOff className="h-3 w-3" strokeWidth={1.5} /> STOP REC</>
+                    ) : (
+                      <><Video className="h-3 w-3" strokeWidth={1.5} /> RECORD</>
+                    )}
+                  </Button>
+                )}
               </div>
             </div>
 
@@ -550,6 +719,12 @@ const FaceRecognition = () => {
                   <X className="h-4 w-4 text-white" />
                 </button>
               )}
+              {isRecording && (
+                <div className="absolute top-2 left-2 z-10 flex items-center gap-1.5 bg-black/70 rounded-full px-2.5 py-1">
+                  <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
+                  <span className="text-[10px] font-mono text-red-400 tracking-wider">REC {formatDuration(recordingDuration)}</span>
+                </div>
+              )}
               {!isCameraActive && (
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
@@ -562,6 +737,60 @@ const FaceRecognition = () => {
               )}
             </div>
           </div>
+
+          {/* Recorded Videos */}
+          {recordedVideos.length > 0 && (
+            <div className="rounded-lg border bg-card p-3 sm:p-4">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <Video className="h-4 w-4 text-accent" strokeWidth={1.5} />
+                  <h3 className="font-mono text-[10px] sm:text-xs tracking-widest uppercase text-muted-foreground">
+                    Recorded Videos
+                  </h3>
+                </div>
+                <Badge variant="outline" className="text-[10px] font-light border-[1px]">
+                  {recordedVideos.length} CLIP{recordedVideos.length !== 1 ? "S" : ""}
+                </Badge>
+              </div>
+              <div className="space-y-3">
+                {recordedVideos.map((video, index) => (
+                  <div
+                    key={index}
+                    className="rounded-lg border border-border/50 bg-muted/20 overflow-hidden"
+                  >
+                    <video
+                      src={video.url}
+                      controls
+                      playsInline
+                      className="w-full aspect-video bg-black"
+                    />
+                    <div className="flex items-center justify-between p-2">
+                      <div className="flex items-center gap-2 min-w-0">
+                        <Video className="h-3.5 w-3.5 text-primary shrink-0" strokeWidth={1.5} />
+                        <div className="min-w-0">
+                          <p className="text-[11px] text-foreground font-medium truncate">
+                            Recording {recordedVideos.length - index}
+                          </p>
+                          <p className="text-[10px] text-muted-foreground">
+                            {video.timestamp} • {formatDuration(video.duration)} • {video.size}
+                          </p>
+                        </div>
+                      </div>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => downloadVideo(video.url, index)}
+                        className="font-mono text-[10px] h-7 px-2 gap-1 shrink-0"
+                      >
+                        <Download className="h-3 w-3" strokeWidth={1.5} />
+                        SAVE
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Detection Results */}
