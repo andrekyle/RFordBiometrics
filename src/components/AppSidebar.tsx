@@ -60,14 +60,14 @@ export function AppSidebar() {
       <div className="p-4 sm:p-6 flex items-start gap-2 sm:gap-3 border-b border-border">
         <img src="/biologo.png" alt="BioSentinel" className="h-10 w-10 sm:h-12 sm:w-12 object-contain shrink-0" />
         <div className="min-w-0">
-          <h1 className="text-sm sm:text-base font-medium text-foreground">BioSentinel</h1>
-          <p className="text-[15px] sm:text-xs text-muted-foreground">Security Platform</p>
+          <h1 className="text-[16px] sm:text-base font-medium text-foreground">BioSentinel</h1>
+          <p className="text-[17px] sm:text-xs text-muted-foreground">Security Platform</p>
         </div>
       </div>
 
       <SidebarContent className="px-3 sm:px-4 py-4 sm:py-6">
         <SidebarGroup>
-          <SidebarGroupLabel className="text-[15px] sm:text-xs font-medium text-muted-foreground px-2 sm:px-3 mb-2 sm:mb-3 uppercase tracking-wider">Menu</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-[17px] sm:text-xs font-medium text-muted-foreground px-2 sm:px-3 mb-2 sm:mb-3 uppercase tracking-wider">Menu</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu className="space-y-1 sm:space-y-2">
               {navItems.map((item) => (
@@ -77,7 +77,7 @@ export function AppSidebar() {
                       to={item.url}
                       end
                       onClick={handleNavClick}
-                      className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 rounded-2xl text-xs sm:text-sm font-normal text-sidebar-foreground hover:bg-sidebar-accent transition-all"
+                      className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 rounded-2xl text-[14px] sm:text-sm font-normal text-sidebar-foreground hover:bg-sidebar-accent transition-all"
                       activeClassName="bg-primary text-white shadow-lg"
                     >
                       <item.icon className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={item.strokeWidth} />
@@ -94,7 +94,7 @@ export function AppSidebar() {
       <SidebarFooter className="p-3 sm:p-4 border-t border-border mt-auto">
         <button 
           onClick={handleSignOut}
-          className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 w-full rounded-2xl text-xs sm:text-sm font-normal text-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-all"
+          className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 w-full rounded-2xl text-[14px] sm:text-sm font-normal text-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-all"
         >
           <LogOut className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.5} />
           <span>Sign Out</span>

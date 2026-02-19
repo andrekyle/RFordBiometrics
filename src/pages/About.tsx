@@ -11,7 +11,7 @@ const About = () => {
       {/* Header */}
       <div>
         <h1 className="text-xl sm:text-[28px] font-normal text-foreground mb-1">About BioSentinel</h1>
-        <p className="text-[15px] sm:text-sm font-light text-muted-foreground">
+        <p className="text-[15px] sm:text-[17px] font-light text-muted-foreground">
           Platform overview, technology stack & how-to guide
         </p>
       </div>
@@ -21,16 +21,16 @@ const About = () => {
         <div className="flex items-center gap-3">
           <img src="/biologo.png" alt="BioSentinel" className="h-14 w-14 object-contain" />
           <div>
-            <h2 className="text-[18px] sm:text-base font-medium text-foreground">BioSentinel Security Platform</h2>
-            <p className="text-[19px] sm:text-xs text-muted-foreground">Real-time motorbike security & facial recognition</p>
+            <h2 className="text-[18px] sm:text-[19px] font-medium text-foreground">BioSentinel Security Platform</h2>
+            <p className="text-[19px] sm:text-[15px] text-muted-foreground">Real-time motorbike security & facial recognition</p>
           </div>
         </div>
-        <p className="text-[16px] sm:text-sm font-light text-muted-foreground leading-relaxed">
+        <p className="text-[16px] sm:text-[17px] font-light text-muted-foreground leading-relaxed">
           BioSentinel is a comprehensive security and tracking platform built for motorbike fleet operations in South Africa. 
           The system combines <span className="text-foreground">real-time GPS tracking</span>, <span className="text-foreground">AI-powered facial recognition</span>, and 
           <span className="text-foreground"> incident management</span> to protect drivers and identify persons of interest during security events.
         </p>
-        <p className="text-[16px] sm:text-sm font-light text-muted-foreground leading-relaxed">
+        <p className="text-[16px] sm:text-[17px] font-light text-muted-foreground leading-relaxed">
           The primary focus of BioSentinel is the <span className="text-primary font-medium">identification of persons of interest</span> in the event of an incident — 
           whether it's a collision, attempted theft, assault, or suspicious activity. Using live camera feeds and AI face detection, 
           the system captures, stores, and cross-references facial data in real time, enabling rapid identification and response. 
@@ -46,7 +46,7 @@ const About = () => {
       <div className="rounded-2xl border bg-card p-4 sm:p-6 space-y-4">
         <div className="flex items-center gap-2 mb-2">
           <Zap className="h-4 w-4 text-primary" strokeWidth={1.5} />
-          <h2 className="font-mono text-[15px] sm:text-xs tracking-widest uppercase text-muted-foreground">
+          <h2 className="font-mono text-[15px] sm:text-[15px] tracking-widest uppercase text-muted-foreground">
             Core Workflow — Person of Interest Identification
           </h2>
         </div>
@@ -87,8 +87,8 @@ const About = () => {
                 <span className="text-[15px] font-mono text-muted-foreground/50">STEP {item.step}</span>
                 <item.icon className={`h-4 w-4 ${item.color}`} strokeWidth={1.5} />
               </div>
-              <h3 className="text-xs sm:text-sm font-medium text-foreground">{item.title}</h3>
-              <p className="text-[15px] sm:text-xs font-light text-muted-foreground leading-relaxed">{item.description}</p>
+              <h3 className="text-xs sm:text-[17px] font-medium text-foreground">{item.title}</h3>
+              <p className="text-[15px] sm:text-[15px] font-light text-muted-foreground leading-relaxed">{item.description}</p>
             </div>
           ))}
         </div>
@@ -98,7 +98,7 @@ const About = () => {
       <div className="rounded-2xl border bg-card p-4 sm:p-6 space-y-4">
         <div className="flex items-center gap-2 mb-2">
           <Monitor className="h-4 w-4 text-primary" strokeWidth={1.5} />
-          <h2 className="font-mono text-[15px] sm:text-xs tracking-widest uppercase text-muted-foreground">
+          <h2 className="font-mono text-[15px] sm:text-[15px] tracking-widest uppercase text-muted-foreground">
             Platform Features
           </h2>
         </div>
@@ -151,8 +151,8 @@ const About = () => {
                 <feature.icon className="h-4 w-4 text-primary" strokeWidth={1.5} />
               </div>
               <div className="space-y-1">
-                <h3 className="text-xs sm:text-sm font-medium text-foreground">{feature.title}</h3>
-                <p className="text-[15px] sm:text-xs font-light text-muted-foreground leading-relaxed">{feature.description}</p>
+                <h3 className="text-xs sm:text-[17px] font-medium text-foreground">{feature.title}</h3>
+                <p className="text-[15px] sm:text-[15px] font-light text-muted-foreground leading-relaxed">{feature.description}</p>
               </div>
             </div>
           ))}
@@ -163,7 +163,7 @@ const About = () => {
       <div className="rounded-2xl border bg-card p-4 sm:p-6 space-y-4">
         <div className="flex items-center gap-2 mb-2">
           <Cpu className="h-4 w-4 text-primary" strokeWidth={1.5} />
-          <h2 className="font-mono text-[15px] sm:text-xs tracking-widest uppercase text-muted-foreground">
+          <h2 className="font-mono text-[15px] sm:text-[15px] tracking-widest uppercase text-muted-foreground">
             Technology Stack
           </h2>
         </div>
@@ -180,12 +180,12 @@ const About = () => {
                 "React 18", "TypeScript", "Vite 5", "Tailwind CSS", "shadcn/ui", 
                 "Radix UI", "Framer Motion", "React Router v6", "Lucide Icons",
               ].map((tech) => (
-                <Badge key={tech} variant="outline" className="text-[14px] sm:text-xs font-light border-primary/20 text-muted-foreground">
+                <Badge key={tech} variant="outline" className="text-[14px] sm:text-[15px] font-light border-primary/20 text-muted-foreground">
                   {tech}
                 </Badge>
               ))}
             </div>
-            <p className="text-[15px] sm:text-xs font-light text-muted-foreground leading-relaxed">
+            <p className="text-[15px] sm:text-[15px] font-light text-muted-foreground leading-relaxed">
               The frontend is a single-page application (SPA) built with React and TypeScript, using Vite for fast builds and hot module replacement. 
               The UI is styled with Tailwind CSS and uses shadcn/ui components (built on Radix UI primitives) for accessible, consistent design. 
               Framer Motion provides smooth page transitions and animations.
@@ -203,12 +203,12 @@ const About = () => {
                 "face-api.js", "SSD MobileNet v1", "68-Point Landmarks", 
                 "Face Descriptors", "Age/Gender Detection", "Expression Analysis",
               ].map((tech) => (
-                <Badge key={tech} variant="outline" className="text-[14px] sm:text-xs font-light border-primary/20 text-muted-foreground">
+                <Badge key={tech} variant="outline" className="text-[14px] sm:text-[15px] font-light border-primary/20 text-muted-foreground">
                   {tech}
                 </Badge>
               ))}
             </div>
-            <p className="text-[15px] sm:text-xs font-light text-muted-foreground leading-relaxed">
+            <p className="text-[15px] sm:text-[15px] font-light text-muted-foreground leading-relaxed">
               Facial recognition is powered by face-api.js, a JavaScript API built on TensorFlow.js. 
               The SSD MobileNet v1 model provides accurate face detection. The system extracts 128-dimensional face descriptors for identity matching, 
               detects 68 facial landmarks for quality assessment, and estimates age, gender, and facial expressions in real time. 
@@ -227,12 +227,12 @@ const About = () => {
                 "Google Maps JavaScript API", "Places Library", "Geometry Library", 
                 "Road-Based Simulation", "Geocoding",
               ].map((tech) => (
-                <Badge key={tech} variant="outline" className="text-[14px] sm:text-xs font-light border-primary/20 text-muted-foreground">
+                <Badge key={tech} variant="outline" className="text-[14px] sm:text-[15px] font-light border-primary/20 text-muted-foreground">
                   {tech}
                 </Badge>
               ))}
             </div>
-            <p className="text-[15px] sm:text-xs font-light text-muted-foreground leading-relaxed">
+            <p className="text-[15px] sm:text-[15px] font-light text-muted-foreground leading-relaxed">
               Live tracking uses the Google Maps JavaScript API with Places and Geometry libraries. 
               Motorbike positions are rendered as real-time markers on the map, with road-based simulation 
               ensuring realistic movement along South African streets. The map supports zone-based monitoring across areas 
@@ -251,12 +251,12 @@ const About = () => {
                 "Firebase Authentication", "IndexedDB", "LocalStorage", 
                 "Vercel (Hosting)", "TanStack React Query",
               ].map((tech) => (
-                <Badge key={tech} variant="outline" className="text-[14px] sm:text-xs font-light border-primary/20 text-muted-foreground">
+                <Badge key={tech} variant="outline" className="text-[14px] sm:text-[15px] font-light border-primary/20 text-muted-foreground">
                   {tech}
                 </Badge>
               ))}
             </div>
-            <p className="text-[15px] sm:text-xs font-light text-muted-foreground leading-relaxed">
+            <p className="text-[15px] sm:text-[15px] font-light text-muted-foreground leading-relaxed">
               Firebase provides authentication infrastructure with support for admin credentials and Google Sign-In. 
               The face database uses IndexedDB for high-performance, structured local storage of face images and descriptors. 
               Session state is managed via LocalStorage. The app is deployed on Vercel with automatic CI/CD from GitHub. 
@@ -270,7 +270,7 @@ const About = () => {
               <Smartphone className="h-3.5 w-3.5 text-muted-foreground" strokeWidth={1.5} />
               <h3 className="text-xs font-medium text-foreground uppercase tracking-wider">Responsive & Mobile</h3>
             </div>
-            <p className="text-[15px] sm:text-xs font-light text-muted-foreground leading-relaxed">
+            <p className="text-[15px] sm:text-[15px] font-light text-muted-foreground leading-relaxed">
               Every page is fully responsive, optimised for desktop, tablet, and mobile. 
               The sidebar collapses on small screens, controls stack vertically, and touch-friendly elements are sized for mobile use. 
               The panic button is positioned as a fixed bottom-right overlay on mobile for instant access.
@@ -283,7 +283,7 @@ const About = () => {
       <div className="rounded-2xl border bg-card p-4 sm:p-6 space-y-4">
         <div className="flex items-center gap-2 mb-2">
           <BookOpen className="h-4 w-4 text-primary" strokeWidth={1.5} />
-          <h2 className="font-mono text-[15px] sm:text-xs tracking-widest uppercase text-muted-foreground">
+          <h2 className="font-mono text-[15px] sm:text-[15px] tracking-widest uppercase text-muted-foreground">
             How to Use the Platform
           </h2>
         </div>
@@ -326,9 +326,9 @@ const About = () => {
             <div key={step.title} className="space-y-1">
               <div className="flex items-center gap-2">
                 <ArrowRight className="h-3 w-3 text-primary shrink-0" strokeWidth={2} />
-                <h3 className="text-xs sm:text-sm font-medium text-foreground">{step.title}</h3>
+                <h3 className="text-xs sm:text-[17px] font-medium text-foreground">{step.title}</h3>
               </div>
-              <p className="text-[15px] sm:text-xs font-light text-muted-foreground leading-relaxed pl-5">{step.content}</p>
+              <p className="text-[15px] sm:text-[15px] font-light text-muted-foreground leading-relaxed pl-5">{step.content}</p>
             </div>
           ))}
         </div>
@@ -338,12 +338,12 @@ const About = () => {
       <div className="rounded-2xl border bg-card p-4 sm:p-6 space-y-4">
         <div className="flex items-center gap-2 mb-2">
           <Monitor className="h-4 w-4 text-primary" strokeWidth={1.5} />
-          <h2 className="font-mono text-[15px] sm:text-xs tracking-widest uppercase text-muted-foreground">
+          <h2 className="font-mono text-[15px] sm:text-[15px] tracking-widest uppercase text-muted-foreground">
             Night Operation & Low-Light Recognition
           </h2>
         </div>
 
-        <p className="text-xs sm:text-sm font-light text-muted-foreground leading-relaxed">
+        <p className="text-xs sm:text-[17px] font-light text-muted-foreground leading-relaxed">
           Facial recognition in low-light or nighttime conditions requires specialised hardware to ensure reliable detection. 
           BioSentinel's AI models perform optimally when the face is clearly illuminated — the system's quality scoring will flag 
           dark or noisy captures as <span className="text-destructive font-medium">"poor"</span> quality, preventing false matches.
@@ -373,8 +373,8 @@ const About = () => {
                 <CheckCircle className="h-3.5 w-3.5 text-primary" strokeWidth={1.5} />
               </div>
               <div className="space-y-1">
-                <h3 className="text-xs sm:text-sm font-medium text-foreground">{item.title}</h3>
-                <p className="text-[15px] sm:text-xs font-light text-muted-foreground leading-relaxed">{item.description}</p>
+                <h3 className="text-xs sm:text-[17px] font-medium text-foreground">{item.title}</h3>
+                <p className="text-[15px] sm:text-[15px] font-light text-muted-foreground leading-relaxed">{item.description}</p>
               </div>
             </div>
           ))}
@@ -382,7 +382,7 @@ const About = () => {
 
         <div className="rounded-xl border border-primary/20 bg-primary/5 p-3 sm:p-4">
           <h3 className="text-xs font-medium text-primary mb-1">Recommended Setup for Motorbike Fleets</h3>
-          <p className="text-[15px] sm:text-xs font-light text-muted-foreground leading-relaxed">
+          <p className="text-[15px] sm:text-[15px] font-light text-muted-foreground leading-relaxed">
             For BioSentinel's South African operations, the optimal configuration is a 
             <span className="text-foreground"> motorbike-mounted dashcam with IR LEDs</span> for capturing faces of nearby individuals at night, 
             combined with a <span className="text-foreground">helmet-mounted camera with fill light</span> for close-range identification during incidents. 
@@ -395,11 +395,11 @@ const About = () => {
       <div className="rounded-2xl border border-primary/20 bg-primary/5 p-4 sm:p-6 space-y-3">
         <div className="flex items-center gap-2">
           <HardDrive className="h-4 w-4 text-primary" strokeWidth={1.5} />
-          <h2 className="font-mono text-[15px] sm:text-xs tracking-widest uppercase text-primary">
+          <h2 className="font-mono text-[15px] sm:text-[15px] tracking-widest uppercase text-primary">
             Future Integration Ready
           </h2>
         </div>
-        <p className="text-[15px] sm:text-xs font-light text-muted-foreground leading-relaxed">
+        <p className="text-[15px] sm:text-[15px] font-light text-muted-foreground leading-relaxed">
           The platform is architected for future integration with external databases including 
           <span className="text-primary font-medium"> SA Home Affairs</span> (population register) and 
           <span className="text-primary font-medium"> SAPS</span> (South African Police Service) criminal databases. 
