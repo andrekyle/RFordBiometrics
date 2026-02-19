@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import * as faceapi from "face-api.js";
-import { Camera, Users, AlertCircle, CheckCircle, Loader2, Save, Database, Scan, AlertTriangle, X, Video, VideoOff, Download, Play, Trash2 } from "lucide-react";
+import { Camera, Users, AlertCircle, CheckCircle, Loader2, Save, Database, Scan, AlertTriangle, X, Video, VideoOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
-import { faceDB, StoredFace, StoredVideo } from "@/lib/face-database";
+import { faceDB, StoredFace } from "@/lib/face-database";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
 
@@ -41,7 +41,6 @@ const FaceRecognition = () => {
   const [fps, setFps] = useState(0);
   const [isRecording, setIsRecording] = useState(false);
   const [recordingDuration, setRecordingDuration] = useState(0);
-  const [recordedVideos, setRecordedVideos] = useState<{ id: string; url: string; timestamp: string; duration: number; size: string }[]>([]);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const recordedChunksRef = useRef<Blob[]>([]);
   const recordingTimerRef = useRef<NodeJS.Timeout | null>(null);
@@ -84,24 +83,9 @@ const FaceRecognition = () => {
         storedFacesRef.current = faces;
         storedDescriptors.current = faces.map(face => new Float32Array(face.descriptor));
 
-        // Load stored videos
-        const videos = await faceDB.getAllVideos();
-        if (videos.length > 0) {
-          const loadedVideos = videos
-            .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
-            .map((v) => ({
-              id: v.id,
-              url: v.videoData, // base64 data URL
-              timestamp: new Date(v.timestamp).toLocaleTimeString(),
-              duration: v.duration,
-              size: v.size,
-            }));
-          setRecordedVideos(loadedVideos);
-        }
-
         toast({
           title: "System Ready",
-          description: `AI models loaded. ${count} faces, ${videos.length} videos available.`,
+          description: `AI models loaded. ${count} faces available for matching.`,
         });
       } catch (err) {
         console.error("Error loading models:", err);
@@ -251,17 +235,6 @@ const FaceRecognition = () => {
             console.error("Error saving video to DB:", err);
           }
 
-          setRecordedVideos((prev) => [
-            {
-              id: videoId,
-              url: base64DataUrl,
-              timestamp: now.toLocaleTimeString(),
-              duration: finalDuration,
-              size: `${sizeInMB} MB`,
-            },
-            ...prev,
-          ]);
-
           toast({
             title: "✓ Video Saved",
             description: `Recording (${sizeInMB} MB) stored in database. View in Face Database.`,
@@ -307,29 +280,6 @@ const FaceRecognition = () => {
     if (recordingTimerRef.current) {
       clearInterval(recordingTimerRef.current);
       recordingTimerRef.current = null;
-    }
-  };
-
-  const downloadVideo = (url: string, index: number) => {
-    const ext = recordingMimeTypeRef.current.includes('mp4') ? 'mp4' : 'webm';
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `biosentinel-recording-${new Date().toISOString().slice(0, 19).replace(/:/g, '-')}-${index}.${ext}`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  };
-
-  const deleteRecordedVideo = async (id: string) => {
-    try {
-      await faceDB.deleteVideo(id);
-      setRecordedVideos((prev) => prev.filter((v) => v.id !== id));
-      toast({
-        title: "Video Deleted",
-        description: "Recording removed from database.",
-      });
-    } catch (err) {
-      console.error("Error deleting video:", err);
     }
   };
 
@@ -789,69 +739,6 @@ const FaceRecognition = () => {
             </div>
           </div>
 
-          {/* Recorded Videos */}
-          {recordedVideos.length > 0 && (
-            <div className="rounded-lg border bg-card p-3 sm:p-4">
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center gap-2">
-                  <Video className="h-4 w-4 text-accent" strokeWidth={1.5} />
-                  <h3 className="font-mono text-[10px] sm:text-xs tracking-widest uppercase text-muted-foreground">
-                    Recorded Videos
-                  </h3>
-                </div>
-                <Badge variant="outline" className="text-[10px] font-light border-[1px]">
-                  {recordedVideos.length} CLIP{recordedVideos.length !== 1 ? "S" : ""}
-                </Badge>
-              </div>
-              <div className="space-y-3">
-                {recordedVideos.map((video, index) => (
-                  <div
-                    key={video.id}
-                    className="rounded-lg border border-border/50 bg-muted/20 overflow-hidden"
-                  >
-                    <video
-                      src={video.url}
-                      controls
-                      playsInline
-                      className="w-full aspect-video bg-black"
-                    />
-                    <div className="flex items-center justify-between p-2">
-                      <div className="flex items-center gap-2 min-w-0">
-                        <Video className="h-3.5 w-3.5 text-primary shrink-0" strokeWidth={1.5} />
-                        <div className="min-w-0">
-                          <p className="text-[11px] text-foreground font-medium truncate">
-                            Recording {recordedVideos.length - index}
-                          </p>
-                          <p className="text-[10px] text-muted-foreground">
-                            {video.timestamp} • {formatDuration(video.duration)} • {video.size}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-1 shrink-0">
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          onClick={() => downloadVideo(video.url, index)}
-                          className="font-mono text-[10px] h-7 px-2 gap-1"
-                        >
-                          <Download className="h-3 w-3" strokeWidth={1.5} />
-                          SAVE
-                        </Button>
-                        <Button
-                          size="sm"
-                          variant="ghost"
-                          onClick={() => deleteRecordedVideo(video.id)}
-                          className="h-7 w-7 p-0 text-destructive hover:text-destructive"
-                        >
-                          <Trash2 className="h-3 w-3" strokeWidth={1.5} />
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
 
         {/* Detection Results */}
