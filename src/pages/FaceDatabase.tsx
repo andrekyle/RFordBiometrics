@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Database, Trash2, AlertCircle, Search, Filter, ArrowLeft } from "lucide-react";
+import { Database, Trash2, AlertCircle, Search, Filter, ArrowLeft, Video, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
-import { faceDB, StoredFace } from "@/lib/face-database";
+import { faceDB, StoredFace, StoredVideo } from "@/lib/face-database";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
 import {
@@ -22,6 +22,7 @@ import {
 const FaceDatabase = () => {
   const [faces, setFaces] = useState<StoredFace[]>([]);
   const [filteredFaces, setFilteredFaces] = useState<StoredFace[]>([]);
+  const [videos, setVideos] = useState<StoredVideo[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedGender, setSelectedGender] = useState<string>("all");
   const [isLoading, setIsLoading] = useState(true);
@@ -30,6 +31,7 @@ const FaceDatabase = () => {
 
   useEffect(() => {
     loadFaces();
+    loadVideos();
   }, []);
 
   useEffect(() => {
@@ -109,6 +111,60 @@ const FaceDatabase = () => {
         variant: "destructive",
       });
     }
+  };
+
+  // ── Video functions ──
+
+  const loadVideos = async () => {
+    try {
+      const storedVideos = await faceDB.getAllVideos();
+      storedVideos.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+      setVideos(storedVideos);
+    } catch (err) {
+      console.error("Error loading videos:", err);
+    }
+  };
+
+  const deleteVideo = async (id: string) => {
+    try {
+      await faceDB.deleteVideo(id);
+      toast({
+        title: "Video Deleted",
+        description: "Recording removed from database.",
+      });
+      loadVideos();
+    } catch (err) {
+      console.error("Error deleting video:", err);
+    }
+  };
+
+  const deleteAllVideos = async () => {
+    try {
+      await faceDB.deleteAllVideos();
+      toast({
+        title: "Videos Cleared",
+        description: "All recordings removed from database.",
+      });
+      loadVideos();
+    } catch (err) {
+      console.error("Error clearing videos:", err);
+    }
+  };
+
+  const downloadVideo = (dataUrl: string, index: number) => {
+    const ext = dataUrl.includes('video/mp4') ? 'mp4' : 'webm';
+    const a = document.createElement('a');
+    a.href = dataUrl;
+    a.download = `biosentinel-recording-${new Date().toISOString().slice(0, 19).replace(/:/g, '-')}-${index}.${ext}`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+
+  const formatDuration = (seconds: number) => {
+    const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
+    const secs = (seconds % 60).toString().padStart(2, '0');
+    return `${mins}:${secs}`;
   };
 
   return (
@@ -306,6 +362,134 @@ const FaceDatabase = () => {
         </div>
       )}
 
+      {/* Recorded Videos Section */}
+      <div className="space-y-3">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="flex items-center gap-2">
+            <Video className="h-4 w-4 text-accent" strokeWidth={1.5} />
+            <h2 className="font-mono text-sm sm:text-lg font-bold tracking-wider text-foreground">
+              RECORDED VIDEOS
+            </h2>
+            <Badge
+              variant="outline"
+              className="bg-primary/15 text-primary border-primary/30 font-mono text-[10px] sm:text-xs"
+            >
+              {videos.length} CLIP{videos.length !== 1 ? "S" : ""}
+            </Badge>
+          </div>
+          {videos.length > 0 && (
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button
+                  variant="destructive"
+                  size="sm"
+                  className="font-mono text-[10px] sm:text-xs h-7 sm:h-8 px-2 sm:px-3"
+                >
+                  <Trash2 className="h-3 w-3 mr-1" />
+                  CLEAR ALL VIDEOS
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Clear All Videos?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This will permanently delete all {videos.length} recorded videos from the database.
+                    This action cannot be undone.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction onClick={deleteAllVideos} className="bg-destructive">
+                    Delete All
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          )}
+        </div>
+
+        {videos.length === 0 ? (
+          <div className="rounded-lg border bg-card p-12 text-center">
+            <Video className="h-12 w-12 text-muted-foreground mx-auto mb-3" strokeWidth={1} />
+            <p className="text-muted-foreground mb-2">No recorded videos</p>
+            <p className="text-xs text-muted-foreground">
+              Use the camera's RECORD button to capture video clips
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+            {videos.map((video, index) => (
+              <motion.div
+                key={video.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.05 }}
+                className="rounded-lg border bg-card overflow-hidden hover:border-primary/30 transition-colors"
+              >
+                <div className="aspect-video bg-black">
+                  <video
+                    src={video.videoData}
+                    controls
+                    playsInline
+                    className="w-full h-full"
+                  />
+                </div>
+                <div className="p-3 flex items-center justify-between">
+                  <div className="min-w-0 flex-1">
+                    <p className="font-mono text-xs text-foreground font-medium">
+                      Recording {videos.length - index}
+                    </p>
+                    <p className="text-[10px] text-muted-foreground">
+                      {new Date(video.timestamp).toLocaleString()} • {formatDuration(video.duration)} • {video.size}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-1 shrink-0 ml-2">
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => downloadVideo(video.videoData, index)}
+                      className="font-mono text-[10px] h-7 px-2 gap-1"
+                    >
+                      <Download className="h-3 w-3" strokeWidth={1.5} />
+                      SAVE
+                    </Button>
+                    <AlertDialog>
+                      <AlertDialogTrigger asChild>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-7 w-7 p-0 text-destructive hover:text-destructive"
+                        >
+                          <Trash2 className="h-3 w-3" />
+                        </Button>
+                      </AlertDialogTrigger>
+                      <AlertDialogContent>
+                        <AlertDialogHeader>
+                          <AlertDialogTitle>Delete Video?</AlertDialogTitle>
+                          <AlertDialogDescription>
+                            This will permanently delete this recording from the database.
+                            This action cannot be undone.
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <AlertDialogCancel>Cancel</AlertDialogCancel>
+                          <AlertDialogAction
+                            onClick={() => deleteVideo(video.id)}
+                            className="bg-destructive"
+                          >
+                            Delete
+                          </AlertDialogAction>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
+      </div>
+
       {/* Info Box */}
       <div className="rounded-lg border border-primary/30 bg-primary/5 p-3 sm:p-4">
         <div className="flex items-start gap-2 sm:gap-3">
@@ -315,8 +499,8 @@ const FaceDatabase = () => {
               ADMIN NOTICE
             </h3>
             <p className="text-[10px] sm:text-[11px] text-muted-foreground">
-              All faces are stored locally in your browser's IndexedDB. For production use,
-              faces should be synced to a secure cloud database with proper encryption and
+              All faces and videos are stored locally in your browser's IndexedDB. For production use,
+              data should be synced to a secure cloud database with proper encryption and
               access controls. Integration with SA Home Affairs and SAPS databases requires
               authorized API credentials.
             </p>
