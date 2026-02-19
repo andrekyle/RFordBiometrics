@@ -25,12 +25,12 @@ const About = () => {
             <p className="text-[15px] sm:text-xs text-muted-foreground">Real-time motorbike security & facial recognition</p>
           </div>
         </div>
-        <p className="text-xs sm:text-sm font-light text-muted-foreground leading-relaxed">
+        <p className="text-[16px] sm:text-sm font-light text-muted-foreground leading-relaxed">
           BioSentinel is a comprehensive security and tracking platform built for motorbike fleet operations in South Africa. 
           The system combines <span className="text-foreground">real-time GPS tracking</span>, <span className="text-foreground">AI-powered facial recognition</span>, and 
           <span className="text-foreground"> incident management</span> to protect drivers and identify persons of interest during security events.
         </p>
-        <p className="text-xs sm:text-sm font-light text-muted-foreground leading-relaxed">
+        <p className="text-[16px] sm:text-sm font-light text-muted-foreground leading-relaxed">
           The primary focus of BioSentinel is the <span className="text-primary font-medium">identification of persons of interest</span> in the event of an incident — 
           whether it's a collision, attempted theft, assault, or suspicious activity. Using live camera feeds and AI face detection, 
           the system captures, stores, and cross-references facial data in real time, enabling rapid identification and response. 
