@@ -19,10 +19,10 @@ const About = () => {
       {/* Overview */}
       <div className="rounded-2xl border bg-card p-4 sm:p-6 space-y-4">
         <div className="flex items-center gap-3">
-          <img src="/biologo.png" alt="BioSentinel" className="h-10 w-10 object-contain" />
+          <img src="/biologo.png" alt="BioSentinel" className="h-14 w-14 object-contain" />
           <div>
-            <h2 className="text-sm sm:text-base font-medium text-foreground">BioSentinel Security Platform</h2>
-            <p className="text-[15px] sm:text-xs text-muted-foreground">Real-time motorbike security & facial recognition</p>
+            <h2 className="text-[18px] sm:text-base font-medium text-foreground">BioSentinel Security Platform</h2>
+            <p className="text-[19px] sm:text-xs text-muted-foreground">Real-time motorbike security & facial recognition</p>
           </div>
         </div>
         <p className="text-[16px] sm:text-sm font-light text-muted-foreground leading-relaxed">
