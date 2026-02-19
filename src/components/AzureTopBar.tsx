@@ -1,4 +1,4 @@
-import { Menu, Search, Bell, Settings, HelpCircle, User, Shield } from "lucide-react";
+import { Menu, Search, Bell, Settings, HelpCircle, User } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -14,9 +14,7 @@ export function AzureTopBar() {
           <Menu className="h-5 w-5" strokeWidth={1.5} />
         </button>
         <div className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-lg bg-white/10 flex items-center justify-center">
-            <Shield className="h-4 w-4 text-white" />
-          </div>
+          <img src="/biologo.png" alt="BioSentinel" className="h-8 w-8 object-contain" />
           <span className="text-white font-semibold text-sm sm:text-[15px]">BioSentinel</span>
         </div>
       </div>

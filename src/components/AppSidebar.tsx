@@ -1,4 +1,4 @@
-import { LayoutDashboard, MapPin, AlertTriangle, Users, LogOut, Shield, Camera } from "lucide-react";
+import { LayoutDashboard, MapPin, AlertTriangle, Users, LogOut, Camera } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "@/components/NavLink";
 import { logoutUser } from "@/lib/firebase";
@@ -46,9 +46,7 @@ export function AppSidebar() {
   return (
     <Sidebar className="border-r border-border bg-background">
       <div className="p-4 sm:p-6 flex items-start gap-2 sm:gap-3 border-b border-border">
-        <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-2xl bg-primary flex items-center justify-center shrink-0">
-          <Shield className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
-        </div>
+        <img src="/biologo.png" alt="BioSentinel" className="h-10 w-10 sm:h-12 sm:w-12 object-contain shrink-0" />
         <div className="min-w-0">
           <h1 className="text-sm sm:text-base font-medium text-foreground">BioSentinel</h1>
           <p className="text-[10px] sm:text-xs text-muted-foreground">Security Platform</p>

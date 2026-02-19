@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Shield } from "lucide-react";
+import { Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -9,6 +9,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
 import { signInWithGoogle } from "@/lib/firebase";
 import { useToast } from "@/hooks/use-toast";
+import Footer from "@/components/Footer";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -87,7 +88,7 @@ const Login = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="relative z-10 mx-auto flex w-full flex-col gap-8 sm:max-w-[400px]"
+        className="relative z-10 mx-auto flex w-full flex-col gap-8 pb-[50px] sm:max-w-[400px]"
       >
         {/* Header */}
         <div className="flex flex-col items-center gap-6 text-center">
@@ -97,9 +98,7 @@ const Login = () => {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-600 via-gray-700/50 to-transparent" />
             </div>
                  {/* Logo */}
-        <div className="h-12 w-12 rounded-2xl bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center relative z-10 mx-auto">
-          <Shield className="h-6 w-6 text-white" />
-        </div>
+        <img src="/biologo.png" alt="BioSentinel" className="h-14 w-14 object-contain relative z-10 mx-auto" />
           </div>
           
           <div className="z-10 flex flex-col gap-2 md:gap-3">
@@ -110,7 +109,7 @@ const Login = () => {
           {/* Admin Credentials Display */}
           <div className="z-10 w-full rounded-lg border border-border bg-muted/30 p-3">
             <div className="flex items-start gap-2">
-              <Shield className="h-4 w-4 text-muted-foreground mt-0.5" strokeWidth={1.5} />
+              <Info className="h-4 w-4 text-muted-foreground mt-0.5" strokeWidth={1.5} />
               <div className="flex-1">
                 <h3 className="text-xs font-normal text-muted-foreground mb-2">Demo Credentials</h3>
                 <div className="space-y-1 text-xs text-muted-foreground/80">
@@ -334,6 +333,9 @@ const Login = () => {
           </Button>
         </div>
       </motion.div>
+      <div className="absolute bottom-0 left-0 right-0 z-10">
+        <Footer />
+      </div>
     </section>
   );
 };

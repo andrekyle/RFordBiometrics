@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
+import Footer from "@/components/Footer";
 
 export default function AppLayout() {
   return (
@@ -18,6 +19,7 @@ export default function AppLayout() {
           <main className="flex-1 overflow-auto bg-background pb-[50px] sm:pb-0">
             <Outlet />
           </main>
+          <Footer />
         </div>
       </div>
     </SidebarProvider>
