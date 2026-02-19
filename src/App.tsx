@@ -10,6 +10,7 @@ import Incidents from "./pages/Incidents";
 import Drivers from "./pages/Drivers";
 import FaceRecognition from "./pages/FaceRecognition";
 import FaceDatabase from "./pages/FaceDatabase";
+import About from "./pages/About";
 import AppLayout from "./layouts/AppLayout";
 import NotFound from "./pages/NotFound";
 
@@ -31,6 +32,7 @@ const App = () => (
             <Route path="/drivers" element={<Drivers />} />
             <Route path="/face-recognition" element={<FaceRecognition />} />
             <Route path="/face-database" element={<FaceDatabase />} />
+            <Route path="/about" element={<About />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

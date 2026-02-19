@@ -1,4 +1,4 @@
-import { LayoutDashboard, MapPin, AlertTriangle, Users, LogOut, Camera } from "lucide-react";
+import { LayoutDashboard, MapPin, AlertTriangle, Users, LogOut, Camera, BookOpen } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "@/components/NavLink";
 import { logoutUser } from "@/lib/firebase";
@@ -15,11 +15,12 @@ import {
 } from "@/components/ui/sidebar";
 
 const navItems = [
-  { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
-  { title: "Live Map", url: "/map", icon: MapPin },
-  { title: "Incidents", url: "/incidents", icon: AlertTriangle },
-  { title: "Drivers", url: "/drivers", icon: Users },
-  { title: "Face Recognition", url: "/face-recognition", icon: Camera },
+  { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard, strokeWidth: 1.5 },
+  { title: "Live Map", url: "/map", icon: MapPin, strokeWidth: 1.5 },
+  { title: "Incidents", url: "/incidents", icon: AlertTriangle, strokeWidth: 1.5 },
+  { title: "Drivers", url: "/drivers", icon: Users, strokeWidth: 1.5 },
+  { title: "Face Recognition", url: "/face-recognition", icon: Camera, strokeWidth: 1 },
+  { title: "About", url: "/about", icon: BookOpen, strokeWidth: 1.5 },
 ];
 
 export function AppSidebar() {
@@ -67,7 +68,7 @@ export function AppSidebar() {
                       className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 rounded-2xl text-xs sm:text-sm font-normal text-sidebar-foreground hover:bg-sidebar-accent transition-all"
                       activeClassName="bg-primary text-white shadow-lg"
                     >
-                      <item.icon className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.5} />
+                      <item.icon className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={item.strokeWidth} />
                       <span>{item.title}</span>
                     </NavLink>
                   </SidebarMenuButton>
