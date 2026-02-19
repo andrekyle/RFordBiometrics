@@ -50,7 +50,7 @@ const Dashboard = () => {
               <span className="text-[10px] sm:text-xs font-normal text-primary uppercase">LIVE</span>
             </div>
           </div>
-          <LiveMap height="240px" drivers={liveDrivers} />
+          <LiveMap height="calc(100vh - 420px)" drivers={liveDrivers} />
         </motion.div>
 
         {/* Activity Feed */}
@@ -63,7 +63,7 @@ const Dashboard = () => {
           <div className="p-3 sm:p-4 border-b border-border bg-card">
             <h2 className="text-[10px] sm:text-xs font-normal tracking-wider uppercase text-muted-foreground">Activity Feed</h2>
           </div>
-          <div className="divide-y divide-border max-h-[280px] sm:max-h-[340px] overflow-y-auto">
+          <div className="divide-y divide-border max-h-[280px] lg:max-h-[calc(100vh-460px)] overflow-y-auto">
             {activities.map((a) => (
               <div key={a.id} className="p-3 sm:p-4 flex items-start gap-2 sm:gap-3 hover:bg-secondary/50 transition-colors">
                 <div className={`mt-1 h-2 w-2 rounded-full shrink-0 ${a.type === "alert" ? "bg-destructive" : a.type === "warning" ? "bg-[hsl(var(--warning))]" : "bg-accent"}`} />
