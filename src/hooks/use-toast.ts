@@ -135,6 +135,11 @@ function dispatch(action: Action) {
 type Toast = Omit<ToasterToast, "id">;
 
 function toast({ ...props }: Toast) {
+  // Suppress toasts on mobile (< 640px, matches Tailwind `sm:` breakpoint)
+  if (typeof window !== "undefined" && window.innerWidth < 640) {
+    return { id: "", dismiss: () => {}, update: () => {} };
+  }
+
   const id = genId();
 
   const update = (props: ToasterToast) =>
