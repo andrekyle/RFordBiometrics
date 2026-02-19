@@ -88,17 +88,17 @@ const Login = () => {
           </div>
           
           {/* Admin Credentials Display */}
-          <div className="z-10 w-full rounded-lg border border-border bg-muted/30 p-3">
+          <div className="z-10 w-full rounded-lg border border-border bg-muted/30 p-3 text-left">
             <div className="flex items-start gap-2">
               <Info className="h-4 w-4 text-muted-foreground mt-0.5" strokeWidth={1.5} />
               <div className="flex-1">
                 <h3 className="text-xs font-normal text-muted-foreground mb-2">Demo Credentials</h3>
                 <div className="space-y-1 text-xs text-muted-foreground/80">
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-col items-start gap-0.5">
                     <span className="text-muted-foreground/60">Email:</span>
                     <code className="rounded bg-muted/50 px-1.5 py-0.5 text-muted-foreground font-mono text-[15px]">admin@biosentinel.co.za</code>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-col items-start gap-0.5">
                     <span className="text-muted-foreground/60">Password:</span>
                     <code className="rounded bg-muted/50 px-1.5 py-0.5 text-muted-foreground font-mono text-[15px]">1234</code>
                   </div>
@@ -108,7 +108,7 @@ const Login = () => {
           </div>
           
           {/* Login Form */}
-          <div className="z-10 w-full mt-6">
+          <div className="z-10 w-full mt-6 text-left">
               <form onSubmit={handleLogin} className="flex flex-col gap-6">
                 <div className="flex flex-col gap-5">
                   <div className="space-y-2">
