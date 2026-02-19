@@ -13,7 +13,7 @@ export default function AppLayout() {
             <SidebarTrigger className="mr-2 sm:mr-4" />
             <div className="flex items-center gap-1.5 sm:gap-2 ml-auto">
               <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-primary animate-pulse-glow" />
-              <span className="text-[8px] sm:text-[10px] font-mono text-primary tracking-widest">SYSTEM ONLINE</span>
+              <span className="text-[10px] sm:text-xs font-mono text-primary tracking-widest">SYSTEM ONLINE</span>
             </div>
           </header>
           <main className="flex-1 overflow-auto bg-background pb-[50px] sm:pb-0">

@@ -115,11 +115,11 @@ const Login = () => {
                 <div className="space-y-1 text-xs text-muted-foreground/80">
                   <div className="flex items-center gap-2">
                     <span className="text-muted-foreground/60">Email:</span>
-                    <code className="rounded bg-muted/50 px-1.5 py-0.5 text-muted-foreground font-mono text-[10px]">admin@biosentinel.co.za</code>
+                    <code className="rounded bg-muted/50 px-1.5 py-0.5 text-muted-foreground font-mono text-[11px]">admin@biosentinel.co.za</code>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-muted-foreground/60">Password:</span>
-                    <code className="rounded bg-muted/50 px-1.5 py-0.5 text-muted-foreground font-mono text-[10px]">1234</code>
+                    <code className="rounded bg-muted/50 px-1.5 py-0.5 text-muted-foreground font-mono text-[11px]">1234</code>
                   </div>
                 </div>
               </div>

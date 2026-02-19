@@ -34,7 +34,7 @@ const MapView = () => {
             </div>
             <div className="min-w-0">
               <p className="text-xl sm:text-2xl font-normal text-foreground">{activeDrivers.length}</p>
-              <p className="text-[10px] sm:text-xs text-muted-foreground">Active Drivers</p>
+              <p className="text-[11px] sm:text-xs text-muted-foreground">Active Drivers</p>
             </div>
           </div>
         </motion.div>
@@ -51,7 +51,7 @@ const MapView = () => {
             </div>
             <div className="min-w-0">
               <p className="text-xl sm:text-2xl font-normal text-foreground">{avgSpeed}</p>
-              <p className="text-[10px] sm:text-xs text-muted-foreground">Avg Speed km/h</p>
+              <p className="text-[11px] sm:text-xs text-muted-foreground">Avg Speed km/h</p>
             </div>
           </div>
         </motion.div>
@@ -68,7 +68,7 @@ const MapView = () => {
             </div>
             <div className="min-w-0">
               <p className="text-xl sm:text-2xl font-normal text-foreground">{drivers.length}</p>
-              <p className="text-[10px] sm:text-xs text-muted-foreground">Total Fleet</p>
+              <p className="text-[11px] sm:text-xs text-muted-foreground">Total Fleet</p>
             </div>
           </div>
         </motion.div>
@@ -85,7 +85,7 @@ const MapView = () => {
             </div>
             <div className="min-w-0">
               <p className="text-xl sm:text-2xl font-normal text-foreground">Live</p>
-              <p className="text-[10px] sm:text-xs text-muted-foreground">Real-time Updates</p>
+              <p className="text-[11px] sm:text-xs text-muted-foreground">Real-time Updates</p>
             </div>
           </div>
         </motion.div>
@@ -102,7 +102,7 @@ const MapView = () => {
               <span className="h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-green-500 animate-pulse shadow-lg shadow-green-500/50" />
               <span className="text-xs sm:text-sm font-medium text-foreground">LIVE MAP</span>
             </div>
-            <span className="text-[10px] sm:text-xs text-muted-foreground font-light">
+            <span className="text-[11px] sm:text-xs text-muted-foreground font-light">
               Tracking {activeDrivers.length} active motorbike{activeDrivers.length !== 1 ? 's' : ''}
             </span>
           </div>
@@ -117,7 +117,7 @@ const MapView = () => {
         >
           <div className="flex items-center justify-between px-1">
             <h3 className="text-xs sm:text-sm font-medium text-foreground">Driver Status</h3>
-            <span className="text-[10px] sm:text-xs text-muted-foreground">{drivers.length} total</span>
+            <span className="text-[11px] sm:text-xs text-muted-foreground">{drivers.length} total</span>
           </div>
           
           <div className="space-y-2 max-h-[200px] lg:max-h-[calc(100vh-340px)] overflow-y-auto pr-1">
@@ -129,14 +129,14 @@ const MapView = () => {
                 <div className="flex items-start justify-between mb-2 sm:mb-3">
                   <div className="min-w-0">
                     <p className="text-xs sm:text-sm font-medium text-foreground group-hover:text-primary transition-colors truncate">{d.name}</p>
-                    <p className="text-[10px] sm:text-xs text-muted-foreground font-mono">{d.id}</p>
+                    <p className="text-[11px] sm:text-xs text-muted-foreground font-mono">{d.id}</p>
                   </div>
                 </div>
                 
                 <div className="flex items-center justify-between mt-2">
                   <Badge 
                     variant={d.status === "active" ? "default" : d.status === "idle" ? "warning" : "secondary"}
-                    className="text-[10px] sm:text-xs"
+                    className="text-[11px] sm:text-xs"
                   >
                     {d.status}
                   </Badge>
@@ -145,7 +145,7 @@ const MapView = () => {
                     <div className="flex items-center gap-1 sm:gap-1.5 text-foreground">
                       <Gauge className="h-3 w-3 sm:h-3.5 sm:w-3.5" strokeWidth={1.5} />
                       <span className="text-xs sm:text-sm font-medium">{d.speed}</span>
-                      <span className="text-[10px] sm:text-xs text-muted-foreground">km/h</span>
+                      <span className="text-[11px] sm:text-xs text-muted-foreground">km/h</span>
                     </div>
                   )}
                 </div>
@@ -153,11 +153,11 @@ const MapView = () => {
                 <div className="mt-2 pt-2 border-t border-border space-y-1">
                   <div className="flex items-center gap-1 sm:gap-1.5 text-muted-foreground">
                     <MapPin className="h-3 w-3 shrink-0" strokeWidth={1.5} />
-                    <span className="text-[10px] sm:text-xs truncate">{d.zone}</span>
+                    <span className="text-[11px] sm:text-xs truncate">{d.zone}</span>
                   </div>
                   <div className="flex items-center gap-1 sm:gap-1.5 text-muted-foreground">
                     <Clock className="h-3 w-3 shrink-0" strokeWidth={1.5} />
-                    <span className="text-[10px] sm:text-xs truncate">{d.lastSeen}</span>
+                    <span className="text-[11px] sm:text-xs truncate">{d.lastSeen}</span>
                   </div>
                 </div>
               </div>

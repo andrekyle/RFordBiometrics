@@ -290,7 +290,7 @@ const FaceDatabase = () => {
                 <div className="absolute top-2 right-2">
                   <Badge
                     variant="outline"
-                    className="bg-primary/90 text-primary-foreground border-primary text-[9px]"
+                    className="bg-primary/90 text-primary-foreground border-primary text-[11px]"
                   >
                     {face.confidence}%
                   </Badge>
@@ -302,7 +302,7 @@ const FaceDatabase = () => {
                     <p className="font-mono text-xs text-muted-foreground truncate">
                       {face.id}
                     </p>
-                    <p className="text-[10px] text-muted-foreground">
+                    <p className="text-[11px] text-muted-foreground">
                       {new Date(face.timestamp).toLocaleString()}
                     </p>
                   </div>
@@ -336,7 +336,7 @@ const FaceDatabase = () => {
                     </AlertDialogContent>
                   </AlertDialog>
                 </div>
-                <div className="space-y-1 text-[11px]">
+                <div className="space-y-1 text-xs">
                   {face.age && (
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Age:</span>
@@ -495,10 +495,10 @@ const FaceDatabase = () => {
         <div className="flex items-start gap-2 sm:gap-3">
           <AlertCircle className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0 mt-0.5" />
           <div>
-            <h3 className="font-mono text-[10px] sm:text-xs text-primary font-semibold mb-1">
+            <h3 className="font-mono text-[11px] sm:text-xs text-primary font-semibold mb-1">
               ADMIN NOTICE
             </h3>
-            <p className="text-[10px] sm:text-[11px] text-muted-foreground">
+            <p className="text-[11px] sm:text-xs text-muted-foreground">
               All faces and videos are stored locally in your browser's IndexedDB. For production use,
               data should be synced to a secure cloud database with proper encryption and
               access controls. Integration with SA Home Affairs and SAPS databases requires

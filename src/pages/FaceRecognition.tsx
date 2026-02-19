@@ -566,7 +566,7 @@ const FaceRecognition = () => {
         <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
           <Badge
             variant="outline"
-            className={`font-light text-[10px] sm:text-xs ${
+            className={`font-light text-[11px] sm:text-xs ${
               isCameraActive
                 ? "bg-primary/15 text-primary border-[1px] border-primary/30"
                 : "bg-muted text-muted-foreground border-[1px]"
@@ -577,7 +577,7 @@ const FaceRecognition = () => {
           </Badge>
           <Badge
             variant="outline"
-            className="bg-primary/15 text-primary border-[1px] border-primary/30 font-light text-[10px] sm:text-xs"
+            className="bg-primary/15 text-primary border-[1px] border-primary/30 font-light text-[11px] sm:text-xs"
           >
             <Scan className="h-3 w-3 mr-1" strokeWidth={1} />
             {faceCount} DETECTED
@@ -585,7 +585,7 @@ const FaceRecognition = () => {
           {faceMatches.length > 0 && (
             <Badge
               variant="outline"
-              className="bg-destructive/15 text-destructive border-[1px] border-destructive/30 font-light text-[10px] sm:text-xs"
+              className="bg-destructive/15 text-destructive border-[1px] border-destructive/30 font-light text-[11px] sm:text-xs"
             >
               <AlertTriangle className="h-3 w-3 mr-1" strokeWidth={1} />
               {faceMatches.length} MATCH{faceMatches.length !== 1 ? "ES" : ""}
@@ -593,7 +593,7 @@ const FaceRecognition = () => {
           )}
           <Badge
             variant="outline"
-            className="bg-muted text-muted-foreground border-[1px] font-light text-[10px] sm:text-xs"
+            className="bg-muted text-muted-foreground border-[1px] font-light text-[11px] sm:text-xs"
           >
             <Database className="h-3 w-3 mr-1" strokeWidth={1} />
             {totalStoredFaces} DB
@@ -601,7 +601,7 @@ const FaceRecognition = () => {
           {isRecording && (
             <Badge
               variant="outline"
-              className="bg-destructive/15 text-destructive border-[1px] border-destructive/30 font-light text-[10px] sm:text-xs"
+              className="bg-destructive/15 text-destructive border-[1px] border-destructive/30 font-light text-[11px] sm:text-xs"
             >
               <Video className="h-3 w-3 mr-1" strokeWidth={1} />
               REC {formatDuration(recordingDuration)}
@@ -639,14 +639,14 @@ const FaceRecognition = () => {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3 sm:mb-4">
               <div className="flex items-center gap-2">
                 <Camera className="h-4 w-4 text-accent shrink-0" />
-                <h3 className="font-mono text-[10px] sm:text-xs tracking-widest uppercase text-muted-foreground">
+                <h3 className="font-mono text-[11px] sm:text-xs tracking-widest uppercase text-muted-foreground">
                   Live Camera Feed
                 </h3>
               </div>
               <div className="flex items-center gap-2 flex-wrap">
                 {isModelLoaded && isCameraActive && (
                   <>
-                    <label className="text-[10px] sm:text-xs font-light text-muted-foreground cursor-pointer flex items-center gap-1.5">
+                    <label className="text-[11px] sm:text-xs font-light text-muted-foreground cursor-pointer flex items-center gap-1.5">
                       <input
                         type="checkbox"
                         checked={autoCapture}
@@ -655,7 +655,7 @@ const FaceRecognition = () => {
                       />
                       Auto-Save
                     </label>
-                    <label className="text-[10px] sm:text-xs font-light text-muted-foreground cursor-pointer flex items-center gap-1.5">
+                    <label className="text-[11px] sm:text-xs font-light text-muted-foreground cursor-pointer flex items-center gap-1.5">
                       <input
                         type="checkbox"
                         checked={matchingEnabled}
@@ -671,7 +671,7 @@ const FaceRecognition = () => {
                     size="sm"
                     variant={isCameraActive ? "destructive" : "default"}
                     onClick={isCameraActive ? stopCamera : startCamera}
-                    className="font-mono text-[10px] sm:text-xs h-7 sm:h-8 px-2 sm:px-3"
+                    className="font-mono text-[11px] sm:text-xs h-7 sm:h-8 px-2 sm:px-3"
                   >
                     {isCameraActive ? "STOP" : "START CAMERA"}
                   </Button>
@@ -681,7 +681,7 @@ const FaceRecognition = () => {
                     size="sm"
                     variant={isRecording ? "destructive" : "outline"}
                     onClick={isRecording ? stopRecording : startRecording}
-                    className="font-mono text-[10px] sm:text-xs h-7 sm:h-8 px-2 sm:px-3 gap-1"
+                    className="font-mono text-[11px] sm:text-xs h-7 sm:h-8 px-2 sm:px-3 gap-1"
                   >
                     {isRecording ? (
                       <><VideoOff className="h-3 w-3" strokeWidth={1.5} /> STOP REC</>
@@ -723,7 +723,7 @@ const FaceRecognition = () => {
               {isRecording && (
                 <div className="absolute top-2 left-2 z-10 flex items-center gap-1.5 bg-black/70 rounded-full px-2.5 py-1">
                   <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
-                  <span className="text-[10px] font-mono text-red-400 tracking-wider">REC {formatDuration(recordingDuration)}</span>
+                  <span className="text-[11px] font-mono text-red-400 tracking-wider">REC {formatDuration(recordingDuration)}</span>
                 </div>
               )}
               {!isCameraActive && (
@@ -746,7 +746,7 @@ const FaceRecognition = () => {
           <div className="rounded-lg border bg-card p-3 sm:p-4">
             <div className="flex items-center gap-2 mb-3 sm:mb-4">
               <Users className="h-4 w-4 text-accent" />
-              <h3 className="font-mono text-[10px] sm:text-xs tracking-widest uppercase text-muted-foreground">
+              <h3 className="font-mono text-[11px] sm:text-xs tracking-widest uppercase text-muted-foreground">
                 Detected Individuals
               </h3>
             </div>
@@ -782,13 +782,13 @@ const FaceRecognition = () => {
                         <div className="flex items-center gap-1">
                           <Badge
                             variant="outline"
-                            className={`${qualityColors[face.quality]} text-[9px] font-light border-[1px]`}
+                            className={`${qualityColors[face.quality]} text-[11px] font-light border-[1px]`}
                           >
                             {face.quality.toUpperCase()}
                           </Badge>
                           <Badge
                             variant="outline"
-                            className="bg-primary/15 text-primary border-[1px] border-primary/30 text-[9px] font-light"
+                            className="bg-primary/15 text-primary border-[1px] border-primary/30 text-[11px] font-light"
                           >
                             {face.confidence}%
                           </Badge>
@@ -800,14 +800,14 @@ const FaceRecognition = () => {
                           <AlertTriangle className="h-4 w-4 text-destructive" strokeWidth={1} />
                           <div className="flex-1">
                             <p className="text-xs font-medium text-destructive">Known Face Match</p>
-                            <p className="text-[10px] text-destructive/80">
+                            <p className="text-[11px] text-destructive/80">
                               {match.confidence}% confidence • {new Date(match.storedFace.timestamp).toLocaleDateString()}
                             </p>
                           </div>
                         </div>
                       )}
 
-                      <div className="space-y-1 text-[11px] font-light">
+                      <div className="space-y-1 text-xs font-light">
                         {face.age && (
                           <p className="text-muted-foreground">
                             Age: <span className="text-foreground font-normal">{face.age} years</span>
@@ -846,7 +846,7 @@ const FaceRecognition = () => {
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
                 <Database className="h-4 w-4 text-primary" />
-                <h3 className="font-mono text-[10px] sm:text-xs tracking-widest uppercase text-muted-foreground">
+                <h3 className="font-mono text-[11px] sm:text-xs tracking-widest uppercase text-muted-foreground">
                   Face Database
                 </h3>
               </div>
@@ -854,16 +854,16 @@ const FaceRecognition = () => {
                 size="sm"
                 variant="outline"
                 onClick={() => navigate("/face-database")}
-                className="font-mono text-[10px] sm:text-xs h-7 sm:h-8 px-2 sm:px-3"
+                className="font-mono text-[11px] sm:text-xs h-7 sm:h-8 px-2 sm:px-3"
               >
                 MANAGE
               </Button>
             </div>
-            <p className="text-[11px] text-muted-foreground mb-2">
+            <p className="text-xs text-muted-foreground mb-2">
               <span className="text-primary font-semibold">{totalStoredFaces} faces</span> stored in local database.
               {autoCapture && " Auto-capture is enabled."}
             </p>
-            <p className="text-[11px] text-muted-foreground">
+            <p className="text-xs text-muted-foreground">
               Faces can be cross-referenced with{" "}
               <span className="text-accent">SA Home Affairs</span> and{" "}
               <span className="text-accent">SAPS</span> databases when API integration is active.
