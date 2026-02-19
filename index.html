@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BioSentinel - Motorbike Security & Tracking</title>
+    <meta name="description" content="Real-time motorbike tracking and security monitoring for Johannesburg" />
+    <meta name="author" content="BioSentinel" />
+
+    <meta property="og:title" content="BioSentinel - Motorbike Security" />
+    <meta property="og:description" content="Real-time motorbike tracking and security monitoring for Johannesburg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/favicon.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@BioSentinel" />
+    <meta name="twitter:image" content="/favicon.png" />
+    
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3YNzpG8zsCR5KwC_yRAsJzRIs8TaRdsA&libraries=places,geometry"></script>
+    
+    <!-- Force dark mode permanently - no light mode option -->
+    <script>
+      (function() {
+        // Always set dark mode
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      })();
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

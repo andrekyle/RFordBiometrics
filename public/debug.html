@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movement Debug</title>
+    <style>
+        body { font-family: monospace; padding: 20px; background: #1a1a1a; color: #fff; }
+        pre { background: #2a2a2a; padding: 10px; border-radius: 5px; overflow: auto; }
+        .status { padding: 5px 10px; border-radius: 3px; display: inline-block; margin: 5px; }
+        .ok { background: #0f5132; }
+        .error { background: #842029; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Movement Diagnostics</h1>
+    <div id="output"></div>
+
+    <script>
+        const output = document.getElementById('output');
+        
+        function log(msg, isError = false) {
+            const div = document.createElement('div');
+            div.className = 'status ' + (isError ? 'error' : 'ok');
+            div.textContent = msg;
+            output.appendChild(div);
+        }
+
+        // Check if we're on the right page
+        log('Opening main app...', false);
+        
+        setTimeout(() => {
+            window.location.href = '/';
+        }, 1000);
+    </script>
+</body>
+</html>

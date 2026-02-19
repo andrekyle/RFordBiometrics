@@ -1,0 +1,217 @@
+/* Microsoft Azure Design System - Segoe UI Font Family */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Azure Portal Background - Light gray */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 13%;
+
+    /* Azure Card/Panel - Pure white */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 13%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 13%;
+
+    /* Microsoft Azure Blue - #0078D4 (Primary brand color) */
+    --primary: 207 100% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Azure Secondary Gray - #F2F2F2 */
+    --secondary: 0 0% 95%;
+    --secondary-foreground: 0 0% 13%;
+
+    /* Azure Muted - #FAFAFA */
+    --muted: 0 0% 98%;
+    --muted-foreground: 0 0% 45%;
+
+    /* Azure Accent Blue - Slightly lighter for hover states */
+    --accent: 207 97% 52%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Azure Red for errors - #E81123 */
+    --destructive: 354 85% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Azure Success Green - #107C10 */
+    --success: 120 77% 27%;
+    --success-foreground: 0 0% 100%;
+
+    /* Azure Warning Orange - #FFB900 */
+    --warning: 44 100% 50%;
+    --warning-foreground: 0 0% 13%;
+
+    /* Azure Borders - #E1E1E1 */
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 207 100% 42%;
+
+    /* Modern rounded design - increased from 2px */
+    --radius: 1rem;
+
+    /* Sidebar - Azure Portal style */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 13%;
+    --sidebar-primary: 207 100% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 207 97% 97%;
+    --sidebar-accent-foreground: 207 100% 42%;
+    --sidebar-border: 0 0% 88%;
+    --sidebar-ring: 207 100% 42%;
+  }
+
+  .dark {
+    /* Charcoal Dark Mode - Deep gray background */
+    --background: 0 0% 8%;
+    --foreground: 0 0% 95%;
+
+    /* Charcoal card - Slightly lighter than background */
+    --card: 0 0% 11%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 11%;
+    --popover-foreground: 0 0% 95%;
+
+    /* Azure Blue for dark mode - Brighter for contrast */
+    --primary: 207 89% 61%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Charcoal secondary - Medium gray */
+    --secondary: 0 0% 16%;
+    --secondary-foreground: 0 0% 95%;
+
+    /* Charcoal muted - Dark gray */
+    --muted: 0 0% 13%;
+    --muted-foreground: 0 0% 60%;
+
+    /* Brighter accent for dark mode */
+    --accent: 207 89% 61%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Slightly softer destructive for dark mode */
+    --destructive: 354 70% 54%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Brighter success for dark mode */
+    --success: 120 61% 50%;
+    --success-foreground: 0 0% 100%;
+
+    /* Brighter warning for dark mode */
+    --warning: 44 100% 60%;
+    --warning-foreground: 0 0% 13%;
+
+    /* Charcoal borders - Subtle separation */
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 207 89% 61%;
+
+    /* Sidebar - Charcoal theme */
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 207 89% 61%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 16%;
+    --sidebar-accent-foreground: 207 89% 61%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 207 89% 61%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    /* Segoe UI is Microsoft's font, fallback to system fonts */
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 300; /* Light weight for thin text */
+    font-size: 14px; /* Azure Portal base font size */
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 400; /* Normal weight for headings - thin */
+    letter-spacing: -0.01em;
+  }
+
+  h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  h2 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  h3 {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+@layer utilities {
+  /* Azure-style shadows */
+  .azure-shadow {
+    box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+  }
+  
+  .azure-shadow-lg {
+    box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+  }
+  
+  /* Azure hover effects */
+  .azure-hover:hover {
+    background-color: hsl(207, 97%, 97%);
+    transition: background-color 0.1s ease;
+  }
+  
+  /* Icon styles */
+  .icon-thin {
+    stroke-width: 1.5px;
+  }
+  
+  /* Azure button styles */
+  .azure-button {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* Azure-style animations */
+@keyframes azure-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-azure-pulse {
+  animation: azure-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Google Maps container styling */
+.gm-style {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', Arial, sans-serif !important;
+}
+
+/* Custom marker smooth animations */
+.custom-marker {
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}

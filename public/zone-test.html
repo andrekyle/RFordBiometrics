@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zone Test</title>
+    <style>
+        body { 
+            font-family: monospace; 
+            padding: 20px; 
+            background: #1a1a1a; 
+            color: #fff; 
+        }
+        .test { 
+            background: #2a2a2a; 
+            padding: 15px; 
+            margin: 10px 0; 
+            border-radius: 5px; 
+            border-left: 4px solid #0f5132;
+        }
+        .coords { color: #888; font-size: 12px; }
+        .zone { color: #0f5; font-weight: bold; }
+        h1 { color: #0f5; }
+    </style>
+</head>
+<body>
+    <h1>🗺️ Zone Detection Test</h1>
+    <p>Testing if GPS coordinates correctly map to zone names...</p>
+    
+    <div id="tests"></div>
+
+    <script type="module">
+        // Test coordinates for known locations
+        const testCases = [
+            { name: "Sandton CBD Center", lat: -26.107407, lng: 28.056229, expected: "Sandton CBD" },
+            { name: "Midrand Center", lat: -25.989460, lng: 28.125280, expected: "Midrand" },
+            { name: "Rosebank Mall", lat: -26.147886, lng: 28.042421, expected: "Rosebank" },
+            { name: "Melville", lat: -26.184167, lng: 28.011667, expected: "Melville" },
+            { name: "Near Sandton", lat: -26.110, lng: 28.058, expected: "Sandton CBD" },
+            { name: "Between zones", lat: -26.12, lng: 28.03, expected: "Should detect nearest" },
+        ];
+
+        // Import the geocoding function
+        import { getZoneFromCoordinates } from '/src/lib/geocoding.ts';
+
+        const testsDiv = document.getElementById('tests');
+
+        testCases.forEach(test => {
+            const result = getZoneFromCoordinates(test.lat, test.lng);
+            const match = result === test.expected || test.expected === "Should detect nearest";
+            
+            const div = document.createElement('div');
+            div.className = 'test';
+            div.innerHTML = `
+                <strong>${test.name}</strong><br>
+                <span class="coords">Coords: ${test.lat.toFixed(6)}, ${test.lng.toFixed(6)}</span><br>
+                <span class="zone">Zone: ${result}</span><br>
+                ${!match ? `<span style="color: #f55">Expected: ${test.expected}</span>` : '<span style="color: #0f5">✓ Correct</span>'}
+            `;
+            testsDiv.appendChild(div);
+        });
+
+        console.log('Zone detection tests completed');
+    </script>
+</body>
+</html>
