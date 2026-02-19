@@ -106,7 +106,7 @@ const MapView = () => {
               Tracking {activeDrivers.length} active motorbike{activeDrivers.length !== 1 ? 's' : ''}
             </span>
           </div>
-          <LiveMap height="min(calc(100vh - 380px), 500px)" drivers={drivers} />
+          <LiveMap height="calc(100vh - 340px)" drivers={drivers} />
         </motion.div>
 
         <motion.div
@@ -120,7 +120,7 @@ const MapView = () => {
             <span className="text-[10px] sm:text-xs text-muted-foreground">{drivers.length} total</span>
           </div>
           
-          <div className="space-y-2 max-h-[200px] lg:max-h-[calc(100vh-280px)] overflow-y-auto pr-1">
+          <div className="space-y-2 max-h-[200px] lg:max-h-[calc(100vh-340px)] overflow-y-auto pr-1">
             {drivers.map((d) => (
               <div 
                 key={d.id} 
