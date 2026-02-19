@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 import { faceDB, StoredFace } from "@/lib/face-database";
 import { useToast } from "@/hooks/use-toast";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { useNavigate } from "react-router-dom";
 
 interface DetectedFace {
@@ -55,6 +56,7 @@ const FaceRecognition = () => {
   const alertedMatchIds = useRef<Set<string>>(new Set()); // Track already alerted matches
   const { toast } = useToast();
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
 
   // Load face-api models and stored faces
   useEffect(() => {
@@ -62,13 +64,26 @@ const FaceRecognition = () => {
       try {
         const MODEL_URL = "https://cdn.jsdelivr.net/npm/@vladmandic/face-api/model";
         
-        await Promise.all([
-          faceapi.nets.ssdMobilenetv1.loadFromUri(MODEL_URL), // More accurate than tinyFaceDetector
-          faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
-          faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL),
-          faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL),
-          faceapi.nets.ageGenderNet.loadFromUri(MODEL_URL),
-        ]);
+        const mobile = window.innerWidth < 768;
+
+        // On mobile load the lightweight TinyFaceDetector; on desktop use the heavier SSD model
+        const modelPromises: Promise<void>[] = mobile
+          ? [
+              faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
+              faceapi.nets.faceLandmark68TinyNet.loadFromUri(MODEL_URL),
+              faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL),
+              faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL),
+              faceapi.nets.ageGenderNet.loadFromUri(MODEL_URL),
+            ]
+          : [
+              faceapi.nets.ssdMobilenetv1.loadFromUri(MODEL_URL),
+              faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
+              faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL),
+              faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL),
+              faceapi.nets.ageGenderNet.loadFromUri(MODEL_URL),
+            ];
+
+        await Promise.all(modelPromises);
         
         setIsModelLoaded(true);
         setIsLoading(false);
@@ -101,10 +116,10 @@ const FaceRecognition = () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: {
-          width: { ideal: 1280 },
-          height: { ideal: 720 },
+          width: { ideal: isMobile ? 640 : 1280 },
+          height: { ideal: isMobile ? 480 : 720 },
           facingMode: "user",
-          frameRate: { ideal: 30 }
+          frameRate: { ideal: isMobile ? 15 : 30 }
         },
       });
 
@@ -435,13 +450,20 @@ const FaceRecognition = () => {
       const displaySize = { width: video.videoWidth, height: video.videoHeight };
       faceapi.matchDimensions(canvas, displaySize);
 
-      // Use SSD MobileNet for better accuracy (replaces TinyFaceDetector)
-      const detections = await faceapi
-        .detectAllFaces(video, new faceapi.SsdMobilenetv1Options({ minConfidence: 0.5 }))
-        .withFaceLandmarks()
-        .withFaceDescriptors()
-        .withFaceExpressions()
-        .withAgeAndGender();
+      // Use TinyFaceDetector on mobile for speed, SSD MobileNet on desktop for accuracy
+      const detections = isMobile
+        ? await faceapi
+            .detectAllFaces(video, new faceapi.TinyFaceDetectorOptions({ inputSize: 224, scoreThreshold: 0.5 }))
+            .withFaceLandmarks(true) // useTinyModel = true
+            .withFaceDescriptors()
+            .withFaceExpressions()
+            .withAgeAndGender()
+        : await faceapi
+            .detectAllFaces(video, new faceapi.SsdMobilenetv1Options({ minConfidence: 0.5 }))
+            .withFaceLandmarks()
+            .withFaceDescriptors()
+            .withFaceExpressions()
+            .withAgeAndGender();
 
       // Clear canvas
       const ctx = canvas.getContext("2d");
@@ -463,7 +485,10 @@ const FaceRecognition = () => {
         drawBox.draw(canvas);
       });
       
-      faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
+      // Skip landmark drawing on mobile for better performance
+      if (!isMobile) {
+        faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
+      }
 
       // Update face count and details
       setFaceCount(detections.length);
@@ -548,9 +573,9 @@ const FaceRecognition = () => {
       }
     };
 
-    const interval = setInterval(detectFaces, 200); // Reduced to 5 FPS to prevent glitching
+    const interval = setInterval(detectFaces, isMobile ? 500 : 200); // Slower on mobile to prevent lag
     return () => clearInterval(interval);
-  }, [isCameraActive, isModelLoaded, autoCapture, matchingEnabled, detectedFaces, faceMatches]);
+  }, [isCameraActive, isModelLoaded, autoCapture, matchingEnabled, detectedFaces, faceMatches, isMobile]);
 
   return (
     <div className="p-3 sm:p-6 space-y-3 sm:space-y-6">

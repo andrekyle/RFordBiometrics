@@ -254,7 +254,7 @@ const Drivers = () => {
                 <td className="p-2 sm:p-3">
                   <Badge 
                     variant={d.status === "active" ? "default" : d.status === "idle" ? "warning" : "secondary"}
-                    className="inline-flex items-center gap-1 sm:gap-1.5 text-[15px] sm:text-xs"
+                    className="inline-flex items-center gap-1 sm:gap-1.5 text-[19px] sm:text-xs"
                   >
                     <span className={cn(
                       "h-1.5 w-1.5 rounded-full",
