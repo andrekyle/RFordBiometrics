@@ -693,7 +693,7 @@ const FaceRecognition = () => {
               </div>
             </div>
 
-            <div className="relative bg-black rounded-lg overflow-hidden aspect-video">
+            <div className="relative bg-black rounded-lg overflow-hidden min-h-[340px] sm:min-h-0 sm:aspect-video">
               <video
                 ref={videoRef}
                 autoPlay
