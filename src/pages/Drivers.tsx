@@ -75,10 +75,8 @@ const Drivers = () => {
           <p className="text-xs sm:text-sm text-muted-foreground">Fleet overview and individual driver monitoring</p>
         </div>
         
-        <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
-          <div className="hidden sm:block">
-            <PanicButton compact location="Driver Management" />
-          </div>
+        <div className="flex items-center gap-2 sm:gap-3">
+          <PanicButton compact location="Driver Management" />
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
               <Button size="icon" className="shrink-0 h-9 w-9">
