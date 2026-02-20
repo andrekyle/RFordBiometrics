@@ -57,7 +57,10 @@ export function AppSidebar() {
 
   return (
     <Sidebar className="border-r border-border bg-background">
-      <div className="p-4 sm:p-6 flex items-start gap-2 sm:gap-3 border-b border-border">
+      <div
+        className="p-4 sm:p-6 flex items-start gap-2 sm:gap-3 border-b border-border cursor-pointer"
+        onClick={() => navigate("/")}
+      >
         <img src="/biologo.png" alt="RFord Biometrics" className="h-10 w-10 sm:h-12 sm:w-12 object-contain shrink-0" />
         <div className="min-w-0">
           <h1 className="text-[16px] sm:text-base font-medium text-foreground">RFord Biometrics</h1>

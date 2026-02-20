@@ -13,7 +13,7 @@ export function AzureTopBar() {
         <button className="text-white hover:bg-white/10 p-1.5 sm:p-2 rounded-sm transition-colors">
           <Menu className="h-5 w-5" strokeWidth={1.5} />
         </button>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate("/")}>
           <img src="/biologo.png" alt="RFord Biometrics" className="h-8 w-8 object-contain" />
           <span className="text-white font-semibold text-sm sm:text-[15px]">RFord Biometrics</span>
         </div>
