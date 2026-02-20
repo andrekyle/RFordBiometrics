@@ -1,17 +1,9 @@
-import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import Footer from "@/components/Footer";
-import { loadGoogleMaps } from "@/lib/google-maps-loader";
 
 export default function AppLayout() {
-  // Load Google Maps API when entering dashboard routes
-  useEffect(() => {
-    loadGoogleMaps().catch((err) =>
-      console.warn('Google Maps failed to load:', err)
-    );
-  }, []);
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-background">

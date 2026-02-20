@@ -163,29 +163,7 @@ export function LiveMap({ className, height = "400px", drivers }: LiveMapProps) 
           defaultZoom={13}
           gestureHandling="greedy"
           disableDefaultUI={false}
-          styles={[
-            {
-              featureType: "poi",
-              elementType: "labels",
-              stylers: [{ visibility: "off" }],
-            },
-            // Uber-style map appearance
-            {
-              featureType: "road",
-              elementType: "geometry",
-              stylers: [{ color: "#ffffff" }],
-            },
-            {
-              featureType: "road",
-              elementType: "labels.text.fill",
-              stylers: [{ color: "#8a8a8a" }],
-            },
-            {
-              featureType: "water",
-              elementType: "geometry",
-              stylers: [{ color: "#c9e6f7" }],
-            },
-          ]}
+          mapId="rfordbiometrics-map"
           onCameraChanged={() => setMapLoaded(true)}
         >
           {mapLoaded && (

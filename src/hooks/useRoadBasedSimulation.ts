@@ -287,13 +287,25 @@ export function useRoadBasedSimulation(intervalMs = 1000) {
     if (initializingRef.current) return;
     initializingRef.current = true;
 
-    // Wait a bit for Google Maps to load
-    const initTimeout = setTimeout(async () => {
+    // Poll for Google Maps to be ready (loaded by APIProvider in LiveMap)
+    let retryCount = 0;
+    const maxRetries = 30; // 30 x 1s = 30 seconds max wait
+
+    const waitForMaps = () => {
       if (typeof google === 'undefined' || !google.maps) {
-        console.warn('Google Maps not loaded yet, retrying...');
-        initializingRef.current = false;
+        retryCount++;
+        if (retryCount < maxRetries) {
+          console.log(`⏳ Waiting for Google Maps... (${retryCount}/${maxRetries})`);
+          setTimeout(waitForMaps, 1000);
+        } else {
+          console.warn('Google Maps failed to load after 30s, routes unavailable');
+          initializingRef.current = false;
+        }
         return;
       }
+
+      // Google Maps is ready — generate routes
+      (async () => {
 
       // Generate routes for all drivers sequentially to avoid rate limiting
       for (let i = 0; i < initialDrivers.length; i++) {
@@ -371,9 +383,15 @@ export function useRoadBasedSimulation(intervalMs = 1000) {
       );
       
       setRoutesLoaded(true);
-    }, 2000); // Wait 2 seconds for map to load
+      })();
+    };
 
-    return () => clearTimeout(initTimeout);
+    // Start polling
+    waitForMaps();
+
+    return () => {
+      retryCount = maxRetries; // Stop retrying on cleanup
+    };
   }, []);
 
   // Movement loop
