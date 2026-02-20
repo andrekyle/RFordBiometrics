@@ -410,11 +410,15 @@ const Landing = () => {
                 key={feature.title}
                 variants={fadeUp}
                 custom={i}
-                className="group relative rounded-2xl border border-white/5 bg-white/[0.02] p-6 sm:p-8 transition-all duration-300 hover:border-primary/20 hover:bg-white/[0.04]"
+                className="group relative flex items-start gap-4 rounded-2xl border border-white/5 bg-white/[0.02] p-5 sm:p-6 transition-all duration-300 hover:border-primary/20 hover:bg-white/[0.04]"
               >
-                <feature.icon className={`mb-4 h-6 w-6 ${feature.color}`} strokeWidth={0.7} />
-                <h3 className="mb-2 text-lg font-semibold text-white">{feature.title}</h3>
-                <p className="text-sm leading-relaxed text-white/50">{feature.description}</p>
+                <div className="shrink-0 mt-1 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
+                  <feature.icon className={`h-5 w-5 ${feature.color}`} strokeWidth={0.7} />
+                </div>
+                <div>
+                  <h3 className="mb-1 text-lg font-semibold text-white">{feature.title}</h3>
+                  <p className="text-sm leading-relaxed text-white/50">{feature.description}</p>
+                </div>
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
               </motion.div>
             ))}
