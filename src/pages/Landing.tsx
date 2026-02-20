@@ -188,7 +188,7 @@ const Landing = () => {
             <a href="#testimonials" className="text-sm text-white/60 transition-colors hover:text-white">Testimonials</a>
             <a href="#subscribe" className="text-sm text-white/60 transition-colors hover:text-white">Subscribe</a>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="hidden sm:flex items-center gap-3">
             <Button
               variant="ghost"
               className="text-white/70 hover:text-white hover:bg-white/10"
@@ -675,8 +675,8 @@ const Landing = () => {
               </p>
             </div>
 
-            {/* Product */}
-            <div>
+            {/* Product - hidden on mobile */}
+            <div className="hidden sm:block">
               <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-white/60">Product</h4>
               <ul className="space-y-2.5">
                 {["GPS Tracking", "Facial Recognition", "Incident Management", "Driver Portal", "Mobile App"].map((item) => (
@@ -687,8 +687,8 @@ const Landing = () => {
               </ul>
             </div>
 
-            {/* Company */}
-            <div>
+            {/* Company - hidden on mobile */}
+            <div className="hidden sm:block">
               <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-white/60">Company</h4>
               <ul className="space-y-2.5">
                 {["About Us", "Pricing", "Contact", "Careers", "Partners"].map((item) => (
