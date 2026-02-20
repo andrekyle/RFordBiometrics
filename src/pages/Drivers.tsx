@@ -79,7 +79,7 @@ const Drivers = () => {
           <PanicButton compact location="Driver Management" />
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
-              <Button size="icon" className="shrink-0 h-9 w-9">
+              <Button variant="ghost" size="icon" className="shrink-0 h-9 w-9">
                 <Plus className="h-5 w-5" />
               </Button>
             </DialogTrigger>

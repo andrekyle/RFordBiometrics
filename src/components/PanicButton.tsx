@@ -82,13 +82,12 @@ export function PanicButton({ driverId, driverName, location, compact = false }:
     return (
       <>
         <Button
-          variant="destructive"
-          size="sm"
-          className="gap-2 bg-red-600 hover:bg-red-700"
+          variant="ghost"
+          size="icon"
+          className="h-9 w-9 text-destructive hover:text-destructive"
           onClick={() => setIsDialogOpen(true)}
         >
-          <AlertTriangle className="h-4 w-4" />
-          <span className="hidden sm:inline">PANIC</span>
+          <AlertTriangle className="h-5 w-5" />
         </Button>
 
         <EmergencyDialog
