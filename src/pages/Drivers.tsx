@@ -69,13 +69,13 @@ const Drivers = () => {
 
   return (
     <div className="p-3 sm:p-6 space-y-3 sm:space-y-4">
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+      <div className="flex items-center justify-between gap-3">
         <div>
           <h1 className="text-xl sm:text-[28px] font-normal text-foreground mb-1">Driver Management</h1>
           <p className="text-xs sm:text-sm text-muted-foreground">Fleet overview and individual driver monitoring</p>
         </div>
         
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           <PanicButton compact location="Driver Management" />
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
@@ -291,10 +291,6 @@ const Drivers = () => {
         </div>
       </div>
 
-      {/* Fixed Panic Button - Mobile Only */}
-      <div className="fixed bottom-4 right-4 z-50 sm:hidden">
-        <PanicButton compact location="Driver Management" />
-      </div>
     </div>
   );
 };
