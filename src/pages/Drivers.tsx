@@ -12,6 +12,7 @@ import { PanicButton } from "@/components/PanicButton";
 import { MapPin, Gauge, Clock, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 // Zone coordinates mapping
 const ZONE_COORDINATES: Record<string, { lat: number; lng: number }> = {
@@ -35,6 +36,7 @@ const Drivers = () => {
   const [drivers, setDrivers] = useState<Driver[]>(initialDrivers);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { toast } = useToast();
+  const isMobile = useIsMobile();
 
   const handleAddDriver = (e: React.FormEvent) => {
     e.preventDefault();
@@ -79,9 +81,15 @@ const Drivers = () => {
           <PanicButton compact location="Driver Management" />
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
-              <Button variant="ghost" size="icon" className="shrink-0 h-9 w-9">
-                <Plus className="h-5 w-5" />
-              </Button>
+              {isMobile ? (
+                <Button variant="ghost" size="icon" className="shrink-0 h-9 w-9">
+                  <Plus className="h-5 w-5" />
+                </Button>
+              ) : (
+                <Button size="icon" className="shrink-0 h-9 w-9">
+                  <Plus className="h-5 w-5" />
+                </Button>
+              )}
             </DialogTrigger>
           <DialogContent className="sm:max-w-[600px] max-h-[85vh] overflow-y-auto">
             <DialogHeader>

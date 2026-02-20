@@ -9,6 +9,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface PanicButtonProps {
@@ -23,6 +24,7 @@ export function PanicButton({ driverId, driverName, location, compact = false }:
   const [isActivated, setIsActivated] = useState(false);
   const [countdown, setCountdown] = useState(3);
   const { toast } = useToast();
+  const isMobile = useIsMobile();
 
   const handlePanicActivation = () => {
     setIsActivated(true);
@@ -81,14 +83,26 @@ export function PanicButton({ driverId, driverName, location, compact = false }:
   if (compact) {
     return (
       <>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="h-9 w-9 text-destructive hover:text-destructive"
-          onClick={() => setIsDialogOpen(true)}
-        >
-          <AlertTriangle className="h-5 w-5" />
-        </Button>
+        {isMobile ? (
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-9 w-9 text-destructive hover:text-destructive"
+            onClick={() => setIsDialogOpen(true)}
+          >
+            <AlertTriangle className="h-5 w-5" />
+          </Button>
+        ) : (
+          <Button
+            variant="destructive"
+            size="sm"
+            className="gap-2 bg-red-600 hover:bg-red-700"
+            onClick={() => setIsDialogOpen(true)}
+          >
+            <AlertTriangle className="h-4 w-4" />
+            PANIC
+          </Button>
+        )}
 
         <EmergencyDialog
           isOpen={isDialogOpen}
