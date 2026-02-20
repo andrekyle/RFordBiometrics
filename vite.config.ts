@@ -18,4 +18,18 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom", "react-router-dom"],
+          firebase: ["firebase/app", "firebase/auth"],
+          maps: ["@vis.gl/react-google-maps"],
+          charts: ["recharts"],
+          ui: ["framer-motion", "lucide-react"],
+          faceapi: ["face-api.js"],
+        },
+      },
+    },
+  },
 }));
