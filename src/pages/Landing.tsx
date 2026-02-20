@@ -128,7 +128,7 @@ const stats = [
 
 const testimonials = [
   {
-    quote: "RFord Biometrics completely transformed how we manage our delivery fleet. The facial recognition alone has prevented multiple theft attempts.",
+    quote: "R Ford Biometrics completely transformed how we manage our delivery fleet. The facial recognition alone has prevented multiple theft attempts.",
     name: "Johan van der Merwe",
     role: "Operations Manager, SwiftDeliver",
     rating: 5,
@@ -140,7 +140,7 @@ const testimonials = [
     rating: 5,
   },
   {
-    quote: "We reduced incident response times by 73% after deploying RFord Biometrics across our fleet. The ROI was immediate.",
+    quote: "We reduced incident response times by 73% after deploying R Ford Biometrics across our fleet. The ROI was immediate.",
     name: "Pieter du Plessis",
     role: "CEO, Cape Couriers",
     rating: 5,
@@ -166,7 +166,7 @@ const Landing = () => {
     e.preventDefault();
     if (!email) return;
     toast({
-      title: "🎉 Welcome to RFord Biometrics!",
+      title: "🎉 Welcome to R Ford Biometrics!",
       description: `We'll be in touch at ${email} about the ${selectedPlan || "Professional"} plan. Thank you!`,
     });
     setEmail("");
@@ -179,8 +179,8 @@ const Landing = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-[#0a0a0a]/80 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3">
-            <img src="/biologo.png" alt="RFord Biometrics" className="h-9 w-9 object-contain" />
-            <span className="text-sm sm:text-lg font-semibold tracking-tight">RFord Biometrics</span>
+            <img src="/biologo.png" alt="R Ford Biometrics" className="h-9 w-9 object-contain" />
+            <span className="text-sm sm:text-lg font-semibold tracking-tight">R Ford Biometrics</span>
           </div>
           <div className="hidden items-center gap-8 md:flex">
             <a href="#features" className="text-sm text-white/60 transition-colors hover:text-white">Features</a>
@@ -313,7 +313,7 @@ const Landing = () => {
                 custom={2}
                 className="text-base text-white/50 sm:text-lg leading-relaxed"
               >
-                RFord Biometrics combines real-time GPS tracking, AI facial recognition, and instant panic alerts 
+                R Ford Biometrics combines real-time GPS tracking, AI facial recognition, and instant panic alerts 
                 to keep your motorbike fleet safe — identifying persons of interest before they disappear.
               </motion.p>
 
@@ -393,7 +393,7 @@ const Landing = () => {
               <span className="text-primary">secure your fleet</span>
             </h2>
             <p className="mx-auto max-w-2xl text-white/50 text-base sm:text-lg">
-              From real-time tracking to AI-powered facial recognition, RFord Biometrics provides 
+              From real-time tracking to AI-powered facial recognition, R Ford Biometrics provides 
               a complete security ecosystem for motorbike operations.
             </p>
           </motion.div>
@@ -455,7 +455,7 @@ const Landing = () => {
             className="grid grid-cols-1 gap-6 sm:grid-cols-2"
           >
             {[
-              { step: "01", title: "Deploy", desc: "Install RFord Biometrics on your fleet devices and register your drivers in minutes.", icon: Smartphone },
+              { step: "01", title: "Deploy", desc: "Install R Ford Biometrics on your fleet devices and register your drivers in minutes.", icon: Smartphone },
               { step: "02", title: "Monitor", desc: "Track all vehicles in real-time. AI continuously scans for anomalies and threats.", icon: Globe },
               { step: "03", title: "Detect", desc: "Incidents trigger automatic camera activation. Faces are captured and analysed instantly.", icon: Camera },
               { step: "04", title: "Identify", desc: "AI matches faces against databases. Authorities are notified with evidence packages.", icon: Eye },
@@ -671,8 +671,8 @@ const Landing = () => {
             {/* Brand */}
             <div className="sm:col-span-2 lg:col-span-1">
               <div className="flex items-center gap-3 mb-4">
-                <img src="/biologo.png" alt="RFord Biometrics" className="h-8 w-8 object-contain" />
-                <span className="text-base font-semibold text-white">RFord Biometrics</span>
+                <img src="/biologo.png" alt="R Ford Biometrics" className="h-8 w-8 object-contain" />
+                <span className="text-base font-semibold text-white">R Ford Biometrics</span>
               </div>
               <p className="text-sm text-white/40 leading-relaxed max-w-xs">
                 AI-powered motorbike fleet security & tracking platform for South Africa.

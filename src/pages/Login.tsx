@@ -35,7 +35,7 @@ const Login = () => {
       
       toast({
         title: "Login successful",
-        description: "Welcome back to RFord Biometrics!",
+        description: "Welcome back to R Ford Biometrics!",
       });
       
       navigate("/dashboard");
@@ -79,7 +79,7 @@ const Login = () => {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-600 via-gray-700/50 to-transparent" />
             </div>
                  {/* Logo */}
-        <img src="/biologo.png" alt="RFord Biometrics" className="h-14 w-14 object-contain relative z-10 mx-auto cursor-pointer" onClick={() => navigate("/")} />
+        <img src="/biologo.png" alt="R Ford Biometrics" className="h-14 w-14 object-contain relative z-10 mx-auto cursor-pointer" onClick={() => navigate("/")} />
           </div>
           
           <div className="z-10 flex flex-col gap-2 md:gap-3">

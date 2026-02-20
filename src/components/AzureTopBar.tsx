@@ -14,8 +14,8 @@ export function AzureTopBar() {
           <Menu className="h-5 w-5" strokeWidth={1.5} />
         </button>
         <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate("/")}>
-          <img src="/biologo.png" alt="RFord Biometrics" className="h-8 w-8 object-contain" />
-          <span className="text-white font-semibold text-sm sm:text-[15px]">RFord Biometrics</span>
+          <img src="/biologo.png" alt="R Ford Biometrics" className="h-8 w-8 object-contain" />
+          <span className="text-white font-semibold text-sm sm:text-[15px]">R Ford Biometrics</span>
         </div>
       </div>
 
