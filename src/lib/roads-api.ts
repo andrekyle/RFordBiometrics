@@ -1,7 +1,7 @@
 // Google Roads API utilities for snapping positions to roads
 // This ensures motorbikes always stay on the road network
 
-const ROADS_API_KEY = import.meta.env.VITE_GOOGLE_ROADS_API_KEY || "AIzaSyA3YNzpG8zsCR5KwC_yRAsJzRIs8TaRdsA";
+const ROADS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '';
 
 interface LatLng {
   lat: number;

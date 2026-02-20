@@ -3,14 +3,14 @@ import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, User } from 'firebase/auth';
 
 // Your web app's Firebase configuration
-// For production, use environment variables
+// Uses environment variables — see .env.example
 const firebaseConfig = {
-  apiKey: "AIzaSyA3YNzpG8zsCR5KwC_yRAsJzRIs8TaRdsA", // Using the Google Maps API key temporarily
-  authDomain: "rfordbiometrics-demo.firebaseapp.com",
-  projectId: "rfordbiometrics-demo",
-  storageBucket: "rfordbiometrics-demo.appspot.com",
-  messagingSenderId: "123456789",
-  appId: "1:123456789:web:abcdef123456"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || '',
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || '',
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || '',
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || '',
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || '',
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || ''
 };
 
 // Initialize Firebase

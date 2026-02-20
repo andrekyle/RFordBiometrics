@@ -12,10 +12,10 @@ After the cleanup, the Google Maps script tag was missing from `index.html`, whi
 
 ## Solution Applied
 
-### 1. Added Google Maps Script to index.html
+### 1. Google Maps loaded dynamically via environment variable
 ```html
-<!-- Google Maps API -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3YNzpG8zsCR5KwC_yRAsJzRIs8TaRdsA&libraries=places,geometry"></script>
+<!-- Google Maps API key is now stored in .env (VITE_GOOGLE_MAPS_API_KEY) -->
+<!-- and loaded dynamically by src/lib/google-maps-loader.ts -->
 ```
 
 ### 2. Added Debug Logging (Temporary)

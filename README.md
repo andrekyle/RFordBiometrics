@@ -132,7 +132,7 @@ src/
 
 ### Google Maps Integration
 - **Provider**: Google Maps Platform
-- **API Key**: AIzaSyA3YNzpG8zsCR5KwC_yRAsJzRIs8TaRdsA
+- **API Key**: Set via `VITE_GOOGLE_MAPS_API_KEY` in `.env` (see `.env.example`)
 - **Features**:
   - Custom AdvancedMarker components
   - Real-time position updates

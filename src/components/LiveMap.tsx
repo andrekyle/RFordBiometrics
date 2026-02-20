@@ -2,8 +2,9 @@
 import { useEffect, useRef, useState } from "react";
 import { APIProvider, Map, AdvancedMarker } from "@vis.gl/react-google-maps";
 import { Driver } from "@/lib/mock-data";
+import { getGoogleMapsApiKey } from "@/lib/google-maps-loader";
 
-const GOOGLE_MAPS_API_KEY = "AIzaSyA3YNzpG8zsCR5KwC_yRAsJzRIs8TaRdsA";
+const GOOGLE_MAPS_API_KEY = getGoogleMapsApiKey();
 
 interface LiveMapProps {
   className?: string;
