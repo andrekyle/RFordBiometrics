@@ -17,7 +17,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   // Admin credentials
-  const ADMIN_EMAIL = "admin@biosentinel.co.za";
+  const ADMIN_EMAIL = "admin@rfordbiometrics.co.za";
   const ADMIN_PASSWORD = "1234";
 
   const handleLogin = (e: React.FormEvent) => {
@@ -35,7 +35,7 @@ const Login = () => {
       
       toast({
         title: "Login successful",
-        description: "Welcome back to BioSentinel!",
+        description: "Welcome back to RFord Biometrics!",
       });
       
       navigate("/dashboard");
@@ -79,7 +79,7 @@ const Login = () => {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-600 via-gray-700/50 to-transparent" />
             </div>
                  {/* Logo */}
-        <img src="/biologo.png" alt="BioSentinel" className="h-14 w-14 object-contain relative z-10 mx-auto" />
+        <img src="/biologo.png" alt="RFord Biometrics" className="h-14 w-14 object-contain relative z-10 mx-auto" />
           </div>
           
           <div className="z-10 flex flex-col gap-2 md:gap-3">
@@ -96,7 +96,7 @@ const Login = () => {
                 <div className="space-y-1 text-xs text-muted-foreground/80">
                   <div className="flex flex-col items-start gap-0.5">
                     <span className="text-muted-foreground/60">Email:</span>
-                    <code className="rounded bg-muted/50 px-1.5 py-0.5 text-muted-foreground font-mono text-[15px]">admin@biosentinel.co.za</code>
+                    <code className="rounded bg-muted/50 px-1.5 py-0.5 text-muted-foreground font-mono text-[15px]">admin@rfordbiometrics.co.za</code>
                   </div>
                   <div className="flex flex-col items-start gap-0.5">
                     <span className="text-muted-foreground/60">Password:</span>

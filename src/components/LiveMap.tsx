@@ -162,7 +162,7 @@ export function LiveMap({ className, height = "400px", drivers }: LiveMapProps) 
           defaultZoom={13}
           gestureHandling="greedy"
           disableDefaultUI={false}
-          mapId="biosentinel-map"
+          mapId="rfordbiometrics-map"
           styles={[
             {
               featureType: "poi",

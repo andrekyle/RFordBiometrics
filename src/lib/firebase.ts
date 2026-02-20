@@ -6,9 +6,9 @@ import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChang
 // For production, use environment variables
 const firebaseConfig = {
   apiKey: "AIzaSyA3YNzpG8zsCR5KwC_yRAsJzRIs8TaRdsA", // Using the Google Maps API key temporarily
-  authDomain: "biosentinel-demo.firebaseapp.com",
-  projectId: "biosentinel-demo",
-  storageBucket: "biosentinel-demo.appspot.com",
+  authDomain: "rfordbiometrics-demo.firebaseapp.com",
+  projectId: "rfordbiometrics-demo",
+  storageBucket: "rfordbiometrics-demo.appspot.com",
   messagingSenderId: "123456789",
   appId: "1:123456789:web:abcdef123456"
 };

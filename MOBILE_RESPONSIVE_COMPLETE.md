@@ -4,7 +4,7 @@
 **Status:** Fully Implemented
 
 ## Summary
-The BioSentinel application is now fully responsive for mobile devices. All pages, components, and UI elements have been optimized for screens ranging from 320px (mobile) to desktop sizes.
+The RFord Biometrics application is now fully responsive for mobile devices. All pages, components, and UI elements have been optimized for screens ranging from 320px (mobile) to desktop sizes.
 
 ---
 

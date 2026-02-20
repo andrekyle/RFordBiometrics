@@ -1,8 +1,8 @@
-# BioSentinel - Ride Security Assistance Platform
+# RFord Biometrics - Ride Security Assistance Platform
 
 ## Overview
 
-**BioSentinel** is a professional security command center application designed for ride-sharing and delivery fleet management in South Africa. The application features real-time driver tracking, AI-powered facial recognition, incident management, and comprehensive monitoring dashboards.
+**RFord Biometrics** is a professional security command center application designed for ride-sharing and delivery fleet management in South Africa. The application features real-time driver tracking, AI-powered facial recognition, incident management, and comprehensive monitoring dashboards.
 
 ## 🎨 Design System
 
@@ -89,7 +89,7 @@ npm run dev
 ```
 
 ### Demo Credentials
-- **Email**: demo@biosentinel.co.za
+- **Email**: demo@rfordbiometrics.co.za
 - **Password**: demo123
 
 ## 🔧 Tech Stack

@@ -257,7 +257,7 @@ function EmergencyDialog({
                   <div className="flex items-center gap-3 p-2 rounded bg-background">
                     <Shield className="h-4 w-4 text-primary" />
                     <div className="flex-1">
-                      <p className="text-sm font-medium">BioSentinel Control Centre</p>
+                      <p className="text-sm font-medium">RFord Biometrics Control Centre</p>
                       <p className="text-xs text-muted-foreground">+27 11 XXX XXXX</p>
                     </div>
                   </div>

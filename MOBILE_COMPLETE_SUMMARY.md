@@ -7,7 +7,7 @@
 
 ## 📱 What Was Done
 
-The BioSentinel application is now **fully responsive** and optimized for mobile devices, tablets, and desktops. Every page and component has been updated with mobile-first responsive design principles.
+The RFord Biometrics application is now **fully responsive** and optimized for mobile devices, tablets, and desktops. Every page and component has been updated with mobile-first responsive design principles.
 
 ---
 
@@ -304,7 +304,7 @@ Full details available in:
 
 ## 🎉 Congratulations!
 
-BioSentinel is now a **fully responsive, production-ready** motorbike tracking and security platform!
+RFord Biometrics is now a **fully responsive, production-ready** motorbike tracking and security platform!
 
 **Test it now:** http://localhost:8080/
 

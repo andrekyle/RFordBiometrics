@@ -10,7 +10,7 @@ const About = () => {
     <div className="p-3 sm:p-6 space-y-6 sm:space-y-8 max-w-[1000px]">
       {/* Header */}
       <div>
-        <h1 className="text-xl sm:text-[28px] font-normal text-foreground mb-1">About BioSentinel</h1>
+        <h1 className="text-xl sm:text-[28px] font-normal text-foreground mb-1">About RFord Biometrics</h1>
         <p className="text-[15px] sm:text-[17px] font-light text-muted-foreground">
           Platform overview, technology stack & how-to guide
         </p>
@@ -19,25 +19,25 @@ const About = () => {
       {/* Overview */}
       <div className="rounded-2xl border bg-card p-4 sm:p-6 space-y-4">
         <div className="flex items-center gap-3">
-          <img src="/biologo.png" alt="BioSentinel" className="h-14 w-14 object-contain" />
+          <img src="/biologo.png" alt="RFord Biometrics" className="h-14 w-14 object-contain" />
           <div>
-            <h2 className="text-[18px] sm:text-[19px] font-medium text-foreground">BioSentinel Security Platform</h2>
+            <h2 className="text-[18px] sm:text-[19px] font-medium text-foreground">RFord Biometrics Security Platform</h2>
             <p className="text-[19px] sm:text-[15px] text-muted-foreground">Real-time motorbike security & facial recognition</p>
           </div>
         </div>
         <p className="text-[16px] sm:text-[17px] font-light text-muted-foreground leading-relaxed">
-          BioSentinel is a comprehensive security and tracking platform built for motorbike fleet operations in South Africa. 
+          RFord Biometrics is a comprehensive security and tracking platform built for motorbike fleet operations in South Africa. 
           The system combines <span className="text-foreground">real-time GPS tracking</span>, <span className="text-foreground">AI-powered facial recognition</span>, and 
           <span className="text-foreground"> incident management</span> to protect drivers and identify persons of interest during security events.
         </p>
         <p className="text-[16px] sm:text-[17px] font-light text-muted-foreground leading-relaxed">
-          The primary focus of BioSentinel is the <span className="text-primary font-medium">identification of persons of interest</span> in the event of an incident — 
+          The primary focus of RFord Biometrics is the <span className="text-primary font-medium">identification of persons of interest</span> in the event of an incident — 
           whether it's a collision, attempted theft, assault, or suspicious activity. Using live camera feeds and AI face detection, 
           the system captures, stores, and cross-references facial data in real time, enabling rapid identification and response. 
           The platform is designed to integrate with <span className="text-primary font-medium">SA Home Affairs</span> (population register and national identity database) 
           and <span className="text-primary font-medium">SAPS</span> (South African Police Service) criminal records databases. 
           When these API connections are active, captured face descriptors can be matched against national records to positively identify 
-          wanted individuals, missing persons, and known offenders — turning BioSentinel into a powerful tool for law enforcement collaboration 
+          wanted individuals, missing persons, and known offenders — turning RFord Biometrics into a powerful tool for law enforcement collaboration 
           and community safety.
         </p>
       </div>
@@ -138,7 +138,7 @@ const About = () => {
             {
               icon: Shield,
               title: "Panic Button",
-              description: "Emergency alert system accessible from any page. Triggers immediate notification to the BioSentinel Control Centre with driver location and incident details.",
+              description: "Emergency alert system accessible from any page. Triggers immediate notification to the RFord Biometrics Control Centre with driver location and incident details.",
             },
             {
               icon: Lock,
@@ -203,7 +203,7 @@ const About = () => {
                 "face-api.js", "SSD MobileNet v1", "68-Point Landmarks", 
                 "Face Descriptors", "Age/Gender Detection", "Expression Analysis",
               ].map((tech) => (
-                <Badge key={tech} variant="outline" className="text-[14px] sm:text-[15px] font-light border-primary/20 text-muted-foreground">
+                <Badge key{tech} variant="outline" className="text-[14px] sm:text-[15px] font-light border-primary/20 text-muted-foreground">
                   {tech}
                 </Badge>
               ))}
@@ -320,7 +320,7 @@ const About = () => {
             },
             {
               title: "8. Panic Button — Emergency Response",
-              content: "Available on the dashboard and drivers pages, the panic button triggers an immediate alert to the BioSentinel Control Centre. It sends the current location, driver details, and activates emergency protocols.",
+              content: "Available on the dashboard and drivers pages, the panic button triggers an immediate alert to the RFord Biometrics Control Centre. It sends the current location, driver details, and activates emergency protocols.",
             },
           ].map((step) => (
             <div key={step.title} className="space-y-1">
@@ -345,7 +345,7 @@ const About = () => {
 
         <p className="text-xs sm:text-[17px] font-light text-muted-foreground leading-relaxed">
           Facial recognition in low-light or nighttime conditions requires specialised hardware to ensure reliable detection. 
-          BioSentinel's AI models perform optimally when the face is clearly illuminated — the system's quality scoring will flag 
+          RFord Biometrics' AI models perform optimally when the face is clearly illuminated — the system's quality scoring will flag 
           dark or noisy captures as <span className="text-destructive font-medium">"poor"</span> quality, preventing false matches.
         </p>
 
@@ -383,7 +383,7 @@ const About = () => {
         <div className="rounded-xl border border-primary/20 bg-primary/5 p-3 sm:p-4">
           <h3 className="text-xs font-medium text-primary mb-1">Recommended Setup for Motorbike Fleets</h3>
           <p className="text-[15px] sm:text-[15px] font-light text-muted-foreground leading-relaxed">
-            For BioSentinel's South African operations, the optimal configuration is a 
+            For RFord Biometrics' South African operations, the optimal configuration is a 
             <span className="text-foreground"> motorbike-mounted dashcam with IR LEDs</span> for capturing faces of nearby individuals at night, 
             combined with a <span className="text-foreground">helmet-mounted camera with fill light</span> for close-range identification during incidents. 
             As long as the face is illuminated — whether by infrared or visible light — the AI detection pipeline operates at full accuracy.
@@ -410,7 +410,7 @@ const About = () => {
 
       {/* Version Info */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-[15px] text-muted-foreground/40 pb-4">
-        <span>BioSentinel v1.0 • Built by RJF Investments</span>
+        <span>RFord Biometrics v1.0 • Built by RJF Investments</span>
         <span>React 18 • TypeScript • Vite 5 • Tailwind CSS • face-api.js</span>
       </div>
     </div>

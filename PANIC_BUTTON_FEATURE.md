@@ -1,7 +1,7 @@
 # 🚨 Panic Button Feature - Complete Implementation
 
 ## Overview
-A comprehensive emergency alert system that allows users to contact police (SAPS) and the BioSentinel Control Centre in emergency situations.
+A comprehensive emergency alert system that allows users to contact police (SAPS) and the RFord Biometrics Control Centre in emergency situations.
 
 ## Features
 
@@ -26,7 +26,7 @@ When activated, the system captures and transmits:
 
 ### 4. **Emergency Contacts Alerted**
 1. **SAPS Emergency Services**: 10111
-2. **BioSentinel Control Centre**: +27 11 XXX XXXX
+2. **RFord Biometrics Control Centre**: +27 11 XXX XXXX
 
 ## Integration Locations
 

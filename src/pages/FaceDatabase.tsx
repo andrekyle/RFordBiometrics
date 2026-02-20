@@ -155,7 +155,7 @@ const FaceDatabase = () => {
     const ext = dataUrl.includes('video/mp4') ? 'mp4' : 'webm';
     const a = document.createElement('a');
     a.href = dataUrl;
-    a.download = `biosentinel-recording-${new Date().toISOString().slice(0, 19).replace(/:/g, '-')}-${index}.${ext}`;
+    a.download = `rfordbiometrics-recording-${new Date().toISOString().slice(0, 19).replace(/:/g, '-')}-${index}.${ext}`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

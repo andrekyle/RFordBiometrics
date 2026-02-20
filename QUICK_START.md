@@ -1,4 +1,4 @@
-# BioSentinel - Quick Start Guide
+# RFord Biometrics - Quick Start Guide
 
 ## 🚀 Getting Started
 
@@ -10,7 +10,7 @@ npm run dev
 The app will be available at: **http://localhost:8082/**
 
 ### Demo Login Credentials
-- **Email**: `demo@biosentinel.co.za`
+- **Email**: `demo@rfordbiometrics.co.za`
 - **Password**: `demo123`
 
 ---
