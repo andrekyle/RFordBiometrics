@@ -86,42 +86,36 @@ const features = [
     title: "Live GPS Tracking",
     description: "Track your entire fleet in real-time with precision GPS. Monitor speed, routes, and stops on an interactive map.",
     color: "text-primary",
-    bg: "bg-primary/10",
   },
   {
     icon: Fingerprint,
     title: "AI Facial Recognition",
     description: "Identify persons of interest instantly using AI-powered face detection and matching against stored databases.",
     color: "text-accent",
-    bg: "bg-accent/10",
   },
   {
     icon: Bell,
     title: "Panic Alert System",
     description: "One-tap emergency alerts notify your control room instantly with GPS coordinates and live camera feed.",
     color: "text-destructive",
-    bg: "bg-destructive/10",
   },
   {
     icon: Eye,
     title: "Video Evidence",
     description: "Automatic video recording during incidents for irrefutable evidence and faster insurance claims.",
     color: "text-primary",
-    bg: "bg-primary/10",
   },
   {
     icon: Lock,
     title: "SAPS Integration",
     description: "Cross-reference captured faces against South African Police Service criminal records for immediate identification.",
     color: "text-warning",
-    bg: "bg-warning/10",
   },
   {
     icon: Activity,
     title: "Incident Management",
     description: "Complete incident lifecycle — from detection through investigation to resolution, all in one platform.",
     color: "text-success",
-    bg: "bg-success/10",
   },
 ];
 
@@ -363,9 +357,7 @@ const Landing = () => {
                 custom={i}
                 className="group relative rounded-2xl border border-white/5 bg-white/[0.02] p-6 sm:p-8 transition-all duration-300 hover:border-primary/20 hover:bg-white/[0.04]"
               >
-                <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl ${feature.bg}`}>
-                  <feature.icon className={`h-6 w-6 ${feature.color}`} strokeWidth={1.5} />
-                </div>
+                <feature.icon className={`mb-4 h-6 w-6 ${feature.color}`} strokeWidth={1} />
                 <h3 className="mb-2 text-lg font-semibold text-white">{feature.title}</h3>
                 <p className="text-sm leading-relaxed text-white/50">{feature.description}</p>
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
@@ -410,8 +402,8 @@ const Landing = () => {
               { step: "04", title: "Identify", desc: "AI matches faces against databases. Authorities are notified with evidence packages.", icon: Fingerprint },
             ].map((item, i) => (
               <motion.div key={item.step} variants={fadeUp} custom={i} className="relative text-center">
-                <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10">
-                  <item.icon className="h-7 w-7 text-primary" strokeWidth={1.5} />
+                <div className="mx-auto mb-6">
+                  <item.icon className="h-7 w-7 text-primary" strokeWidth={1} />
                 </div>
                 <div className="mb-2 text-xs font-mono text-primary/60 tracking-widest">STEP {item.step}</div>
                 <h3 className="mb-2 text-xl font-semibold text-white">{item.title}</h3>
@@ -486,7 +478,7 @@ const Landing = () => {
                 <ul className="mb-8 flex-1 space-y-3">
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" strokeWidth={2} />
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" strokeWidth={1} />
                       <span className="text-sm text-white/60">{feature}</span>
                     </li>
                   ))}
@@ -569,8 +561,8 @@ const Landing = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-3xl border border-primary/20 bg-primary/10">
-              <Shield className="h-10 w-10 text-primary" strokeWidth={1.5} />
+            <div className="mx-auto mb-8">
+              <Shield className="h-10 w-10 text-primary" strokeWidth={1} />
             </div>
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-4">
               Ready to secure
