@@ -448,7 +448,7 @@ const Landing = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
+            className="grid grid-cols-1 gap-6 sm:grid-cols-2"
           >
             {[
               { step: "01", title: "Deploy", desc: "Install RFord Biometrics on your fleet devices and register your drivers in minutes.", icon: Smartphone },
@@ -456,20 +456,15 @@ const Landing = () => {
               { step: "03", title: "Detect", desc: "Incidents trigger automatic camera activation. Faces are captured and analysed instantly.", icon: Camera },
               { step: "04", title: "Identify", desc: "AI matches faces against databases. Authorities are notified with evidence packages.", icon: Eye },
             ].map((item, i) => (
-              <motion.div key={item.step} variants={fadeUp} custom={i} className="relative flex items-start gap-4 sm:flex-col sm:items-center sm:text-center sm:gap-0">
-                <div className="shrink-0 mt-1 sm:mt-0 sm:mb-6">
-                  <item.icon className="h-7 w-7 text-primary" strokeWidth={0.7} />
+              <motion.div key={item.step} variants={fadeUp} custom={i} className="relative flex items-start gap-4 rounded-2xl border border-white/5 bg-white/[0.02] p-5 sm:p-6 transition-all duration-300 hover:border-white/10">
+                <div className="shrink-0 mt-1 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
+                  <item.icon className="h-5 w-5 text-primary" strokeWidth={0.7} />
                 </div>
                 <div>
-                  <div className="mb-1 sm:mb-2 text-xs font-mono text-primary/60 tracking-widest">STEP {item.step}</div>
-                  <h3 className="mb-1 sm:mb-2 text-xl font-semibold text-white">{item.title}</h3>
+                  <div className="mb-1 text-xs font-mono text-primary/60 tracking-widest">STEP {item.step}</div>
+                  <h3 className="mb-1 text-lg font-semibold text-white">{item.title}</h3>
                   <p className="text-sm text-white/50 leading-relaxed">{item.desc}</p>
                 </div>
-                {i < 3 && (
-                  <div className="hidden lg:block absolute top-8 -right-3 w-6">
-                    <ChevronRight className="h-5 w-5 text-white/10" strokeWidth={0.7} />
-                  </div>
-                )}
               </motion.div>
             ))}
           </motion.div>

@@ -1,6 +1,7 @@
 import { 
   BookOpen, Zap, Cpu, Globe, MapPin, Server, Smartphone,
-  Monitor, ArrowRight, CheckCircle, HardDrive
+  Monitor, ArrowRight, CheckCircle, HardDrive, AlertTriangle,
+  Camera, Search, Bell, Database, Users, Shield, Lock
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
