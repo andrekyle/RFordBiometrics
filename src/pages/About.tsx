@@ -1,7 +1,6 @@
 import { 
-  BookOpen, Shield, MapPin, Camera, Users, AlertTriangle, Database, 
-  Cpu, Globe, Smartphone, Lock, Zap, Search, Bell, ArrowRight,
-  CheckCircle, Monitor, Server, HardDrive
+  BookOpen, Zap, Cpu, Globe, MapPin, Server, Smartphone,
+  Monitor, ArrowRight, CheckCircle, HardDrive
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
@@ -195,7 +194,6 @@ const About = () => {
           {/* AI & Computer Vision */}
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <Camera className="h-3.5 w-3.5 text-muted-foreground" strokeWidth={1.5} />
               <h3 className="text-xs font-medium text-foreground uppercase tracking-wider">AI & Computer Vision</h3>
             </div>
             <div className="flex flex-wrap gap-1.5">
@@ -203,7 +201,7 @@ const About = () => {
                 "face-api.js", "SSD MobileNet v1", "68-Point Landmarks", 
                 "Face Descriptors", "Age/Gender Detection", "Expression Analysis",
               ].map((tech) => (
-                <Badge key{tech} variant="outline" className="text-[14px] sm:text-[15px] font-light border-primary/20 text-muted-foreground">
+                <Badge key={tech} variant="outline" className="text-[14px] sm:text-[15px] font-light border-primary/20 text-muted-foreground">
                   {tech}
                 </Badge>
               ))}

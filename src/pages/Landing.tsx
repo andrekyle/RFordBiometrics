@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
-  Shield, Camera, Users, Zap, Check, ArrowRight,
-  ChevronRight, Star, Fingerprint, Radar, Eye, Lock,
-  Smartphone, Globe, Bell, Activity, ChevronDown
+  Shield, Users, Zap, Check, ArrowRight,
+  ChevronRight, Star, ChevronDown, MapPin, 
+  AlertTriangle, Eye, Lock, Camera, Smartphone, Globe
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -82,25 +82,25 @@ const plans = [
 
 const features = [
   {
-    icon: Radar,
+    icon: MapPin,
     title: "Live GPS Tracking",
     description: "Track your entire fleet in real-time with precision GPS. Monitor speed, routes, and stops on an interactive map.",
     color: "text-primary",
   },
   {
-    icon: Fingerprint,
+    icon: Eye,
     title: "AI Facial Recognition",
     description: "Identify persons of interest instantly using AI-powered face detection and matching against stored databases.",
     color: "text-accent",
   },
   {
-    icon: Bell,
+    icon: AlertTriangle,
     title: "Panic Alert System",
     description: "One-tap emergency alerts notify your control room instantly with GPS coordinates and live camera feed.",
     color: "text-destructive",
   },
   {
-    icon: Eye,
+    icon: Camera,
     title: "Video Evidence",
     description: "Automatic video recording during incidents for irrefutable evidence and faster insurance claims.",
     color: "text-primary",
@@ -109,13 +109,13 @@ const features = [
     icon: Lock,
     title: "SAPS Integration",
     description: "Cross-reference captured faces against South African Police Service criminal records for immediate identification.",
-    color: "text-warning",
+    color: "text-primary",
   },
   {
-    icon: Activity,
+    icon: Zap,
     title: "Incident Management",
     description: "Complete incident lifecycle — from detection through investigation to resolution, all in one platform.",
-    color: "text-success",
+    color: "text-primary",
   },
 ];
 
@@ -180,7 +180,7 @@ const Landing = () => {
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3">
             <img src="/biologo.png" alt="RFord Biometrics" className="h-9 w-9 object-contain" />
-            <span className="text-lg font-semibold tracking-tight">RFord Biometrics</span>
+            <span className="text-sm sm:text-lg font-semibold tracking-tight">RFord Biometrics</span>
           </div>
           <div className="hidden items-center gap-8 md:flex">
             <a href="#features" className="text-sm text-white/60 transition-colors hover:text-white">Features</a>
@@ -201,7 +201,7 @@ const Landing = () => {
               onClick={() => handleSubscribe("Professional")}
             >
               Get Started
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4" strokeWidth={0.7} />
             </Button>
           </div>
         </div>
@@ -231,72 +231,126 @@ const Landing = () => {
           className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-primary/3 blur-3xl"
         />
 
-        <div className="relative z-10 mx-auto max-w-5xl text-center">
-          <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={0}>
-            <Badge className="mb-6 border-primary/20 bg-primary/10 text-primary px-4 py-1.5 text-sm font-medium hover:bg-primary/15">
-              <Zap className="mr-1.5 h-3.5 w-3.5" />
-              AI-Powered Fleet Security for South Africa
-            </Badge>
-          </motion.div>
+        {/* Biometric Art Elements */}
+        <svg className="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="none">
+          <defs>
+            <filter id="biometric-glow">
+              <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
+              <feMerge>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
 
-          <motion.h1
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={1}
-            className="mb-6 text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl md:text-7xl"
-          >
-            Protect Your Riders.
-            <br />
-            <span className="bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent">
-              Identify Threats Instantly.
-            </span>
-          </motion.h1>
+          {/* Iris Scan Circle - Top Right - More Visible */}
+          <g opacity="0.15" filter="url(#biometric-glow)">
+            <circle cx="92%" cy="12%" r="28" fill="none" stroke="#0099ff" strokeWidth="0.9" />
+            <circle cx="92%" cy="12%" r="22" fill="none" stroke="#00d4ff" strokeWidth="0.8" />
+            <circle cx="92%" cy="12%" r="16" fill="none" stroke="#0099ff" strokeWidth="0.8" />
+            <circle cx="92%" cy="12%" r="10" fill="none" stroke="#00d4ff" strokeWidth="0.7" />
+            <circle cx="92%" cy="12%" r="5" fill="none" stroke="#0099ff" strokeWidth="0.6" />
+            <circle cx="92%" cy="12%" r="2" fill="#00d4ff" opacity="0.9" />
+            {/* Iris radial spokes */}
+            <line x1="92%" y1="40%" x2="92%" y2="50%" stroke="#0099ff" strokeWidth="0.6" opacity="0.7" />
+            <line x1="64%" y1="12%" x2="74%" y2="12%" stroke="#00d4ff" strokeWidth="0.6" opacity="0.7" />
+            <line x1="92%" y1="-16%" x2="92%" y2="-6%" stroke="#0099ff" strokeWidth="0.6" opacity="0.7" />
+            <line x1="120%" y1="12%" x2="110%" y2="12%" stroke="#00d4ff" strokeWidth="0.6" opacity="0.7" />
+          </g>
 
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={2}
-            className="mx-auto mb-10 max-w-2xl text-base text-white/50 sm:text-lg md:text-xl leading-relaxed"
-          >
-            RFord Biometrics combines real-time GPS tracking, AI facial recognition, and instant panic alerts 
-            to keep your motorbike fleet safe — identifying persons of interest before they disappear.
-          </motion.p>
+          {/* Face Detection Grid - Bottom Left - Smaller */}
+          <g opacity="0.06" filter="url(#biometric-glow)">
+            <rect x="6%" y="78%" width="70" height="70" fill="none" stroke="#0099ff" strokeWidth="0.4" />
+            <line x1="6%" y1="84%" x2="13%" y2="84%" stroke="#00d4ff" strokeWidth="0.3" />
+            <line x1="6%" y1="90%" x2="13%" y2="90%" stroke="#0099ff" strokeWidth="0.3" />
+            {/* Face landmark points */}
+            <circle cx="8.5%" cy="80%" r="1.5" fill="#00d4ff" opacity="0.7" />
+            <circle cx="12%" cy="81%" r="1.5" fill="#0099ff" opacity="0.7" />
+            <circle cx="10%" cy="86%" r="1.5" fill="#00d4ff" opacity="0.7" />
+            <circle cx="9%" cy="92%" r="1.5" fill="#0099ff" opacity="0.7" />
+          </g>
 
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={3}
-            className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
-          >
-            <Button
-              size="lg"
-              className="h-14 px-8 text-base bg-primary hover:bg-primary/90 text-white gap-2 rounded-xl shadow-lg shadow-primary/25"
-              onClick={() => handleSubscribe("Professional")}
-            >
-              Start Free Trial
-              <ArrowRight className="h-5 w-5" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="h-14 px-8 text-base border-white/10 bg-white/5 text-white hover:bg-white/10 gap-2 rounded-xl"
-              onClick={() => navigate("/login")}
-            >
-              View Live Demo
-              <ChevronRight className="h-5 w-5" />
-            </Button>
-          </motion.div>
+          {/* Vertical Scan Lines - Center Right - Smaller */}
+          <g opacity="0.07" filter="url(#biometric-glow)">
+            <line x1="75%" y1="35%" x2="75%" y2="65%" stroke="#0099ff" strokeWidth="0.5" />
+            <line x1="76.5%" y1="35%" x2="76.5%" y2="65%" stroke="#00d4ff" strokeWidth="0.4" />
+            <line x1="78%" y1="35%" x2="78%" y2="65%" stroke="#0099ff" strokeWidth="0.35" />
+          </g>
 
-          {/* Stats bar */}
+          {/* Diagonal Accent Lines */}
+          <g opacity="0.06">
+            <line x1="5%" y1="50%" x2="25%" y2="30%" stroke="#0099ff" strokeWidth="0.8" />
+            <line x1="75%" y1="50%" x2="95%" y2="70%" stroke="#00d4ff" strokeWidth="0.8" />
+          </g>
+        </svg>
+
+        <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
+          <div className="space-y-6">
+              <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={0}>
+                <Badge className="mb-6 border-primary/20 bg-primary/10 text-primary px-4 py-1.5 text-sm font-medium hover:bg-primary/15">
+                  AI-Powered Fleet Security for South Africa
+                </Badge>
+              </motion.div>
+
+              <motion.h1
+                variants={fadeUp}
+                initial="hidden"
+                animate="visible"
+                custom={1}
+                className="text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl"
+              >
+                Protect Your Riders.
+                <br />
+                <span className="bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent">
+                  Identify Threats Instantly.
+                </span>
+              </motion.h1>
+
+              <motion.p
+                variants={fadeUp}
+                initial="hidden"
+                animate="visible"
+                custom={2}
+                className="text-base text-white/50 sm:text-lg leading-relaxed"
+              >
+                RFord Biometrics combines real-time GPS tracking, AI facial recognition, and instant panic alerts 
+                to keep your motorbike fleet safe — identifying persons of interest before they disappear.
+              </motion.p>
+
+              <motion.div
+                variants={fadeUp}
+                initial="hidden"
+                animate="visible"
+                custom={3}
+                className="flex flex-col sm:flex-row gap-4 pt-4"
+              >
+                <Button
+                  size="lg"
+                  className="h-14 px-8 text-base bg-primary hover:bg-primary/90 text-white gap-2 rounded-xl shadow-lg shadow-primary/25"
+                  onClick={() => handleSubscribe("Professional")}
+                >
+                  Start Free Trial
+                  <ArrowRight className="h-5 w-5" strokeWidth={0.7} />
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="h-14 px-8 text-base border-white/10 bg-white/5 text-white hover:bg-white/10 gap-2 rounded-xl"
+                  onClick={() => navigate("/login")}
+                >
+                  View Live Demo
+                  <ChevronRight className="h-5 w-5" strokeWidth={0.7} />
+                </Button>
+              </motion.div>
+            </div>
+
+          {/* Stats bar - now below both columns */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
             animate="visible"
             custom={5}
-            className="mx-auto mt-16 grid max-w-2xl grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-8"
+            className="mx-auto mt-16 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-8 lg:mt-20"
           >
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
@@ -305,6 +359,7 @@ const Landing = () => {
               </div>
             ))}
           </motion.div>
+
         </div>
 
         {/* Scroll indicator */}
@@ -313,7 +368,7 @@ const Landing = () => {
           transition={{ duration: 2, repeat: Infinity }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2"
         >
-          <ChevronDown className="h-6 w-6 text-white/20" />
+          <ChevronDown className="h-6 w-6 text-white/20" strokeWidth={0.7} />
         </motion.div>
       </motion.section>
 
@@ -328,8 +383,8 @@ const Landing = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="text-center mb-16"
           >
-            <Badge className="mb-4 border-primary/20 bg-primary/10 text-primary">
-              <Shield className="mr-1.5 h-3.5 w-3.5" />
+            <Badge className="mb-4 border-primary/20 bg-primary/10 text-primary inline-flex items-center">
+              <Shield className="mr-1.5 h-3.5 w-3.5" strokeWidth={0.7} />
               Platform Features
             </Badge>
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-4">
@@ -357,7 +412,7 @@ const Landing = () => {
                 custom={i}
                 className="group relative rounded-2xl border border-white/5 bg-white/[0.02] p-6 sm:p-8 transition-all duration-300 hover:border-primary/20 hover:bg-white/[0.04]"
               >
-                <feature.icon className={`mb-4 h-6 w-6 ${feature.color}`} strokeWidth={1} />
+                <feature.icon className={`mb-4 h-6 w-6 ${feature.color}`} strokeWidth={0.7} />
                 <h3 className="mb-2 text-lg font-semibold text-white">{feature.title}</h3>
                 <p className="text-sm leading-relaxed text-white/50">{feature.description}</p>
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
@@ -377,8 +432,8 @@ const Landing = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="text-center mb-16"
           >
-            <Badge className="mb-4 border-primary/20 bg-primary/10 text-primary">
-              <Zap className="mr-1.5 h-3.5 w-3.5" />
+            <Badge className="mb-4 border-primary/20 bg-primary/10 text-primary inline-flex items-center">
+              <Zap className="mr-1.5 h-3.5 w-3.5" strokeWidth={0.7} />
               How It Works
             </Badge>
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-4">
@@ -399,18 +454,20 @@ const Landing = () => {
               { step: "01", title: "Deploy", desc: "Install RFord Biometrics on your fleet devices and register your drivers in minutes.", icon: Smartphone },
               { step: "02", title: "Monitor", desc: "Track all vehicles in real-time. AI continuously scans for anomalies and threats.", icon: Globe },
               { step: "03", title: "Detect", desc: "Incidents trigger automatic camera activation. Faces are captured and analysed instantly.", icon: Camera },
-              { step: "04", title: "Identify", desc: "AI matches faces against databases. Authorities are notified with evidence packages.", icon: Fingerprint },
+              { step: "04", title: "Identify", desc: "AI matches faces against databases. Authorities are notified with evidence packages.", icon: Eye },
             ].map((item, i) => (
-              <motion.div key={item.step} variants={fadeUp} custom={i} className="relative text-center">
-                <div className="mx-auto mb-6">
-                  <item.icon className="h-7 w-7 text-primary" strokeWidth={1} />
+              <motion.div key={item.step} variants={fadeUp} custom={i} className="relative flex items-start gap-4 sm:flex-col sm:items-center sm:text-center sm:gap-0">
+                <div className="shrink-0 mt-1 sm:mt-0 sm:mb-6">
+                  <item.icon className="h-7 w-7 text-primary" strokeWidth={0.7} />
                 </div>
-                <div className="mb-2 text-xs font-mono text-primary/60 tracking-widest">STEP {item.step}</div>
-                <h3 className="mb-2 text-xl font-semibold text-white">{item.title}</h3>
-                <p className="text-sm text-white/50 leading-relaxed">{item.desc}</p>
+                <div>
+                  <div className="mb-1 sm:mb-2 text-xs font-mono text-primary/60 tracking-widest">STEP {item.step}</div>
+                  <h3 className="mb-1 sm:mb-2 text-xl font-semibold text-white">{item.title}</h3>
+                  <p className="text-sm text-white/50 leading-relaxed">{item.desc}</p>
+                </div>
                 {i < 3 && (
                   <div className="hidden lg:block absolute top-8 -right-3 w-6">
-                    <ChevronRight className="h-5 w-5 text-white/10" />
+                    <ChevronRight className="h-5 w-5 text-white/10" strokeWidth={0.7} />
                   </div>
                 )}
               </motion.div>
@@ -478,7 +535,7 @@ const Landing = () => {
                 <ul className="mb-8 flex-1 space-y-3">
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" strokeWidth={1} />
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" strokeWidth={0.7} />
                       <span className="text-sm text-white/60">{feature}</span>
                     </li>
                   ))}
@@ -492,7 +549,7 @@ const Landing = () => {
                   onClick={() => handleSubscribe(plan.name)}
                 >
                   {plan.cta}
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="ml-2 h-4 w-4" strokeWidth={0.7} />
                 </Button>
               </motion.div>
             ))}
@@ -510,8 +567,8 @@ const Landing = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="text-center mb-16"
           >
-            <Badge className="mb-4 border-primary/20 bg-primary/10 text-primary">
-              <Users className="mr-1.5 h-3.5 w-3.5" />
+            <Badge className="mb-4 border-primary/20 bg-primary/10 text-primary inline-flex items-center">
+              <Users className="mr-1.5 h-3.5 w-3.5" strokeWidth={0.7} />
               Testimonials
             </Badge>
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-4">
@@ -537,7 +594,7 @@ const Landing = () => {
               >
                 <div className="mb-4 flex gap-1">
                   {Array.from({ length: t.rating }).map((_, j) => (
-                    <Star key={j} className="h-4 w-4 fill-primary text-primary" />
+                    <Star key={j} className="h-4 w-4 fill-none text-primary" strokeWidth={0.7} />
                   ))}
                 </div>
                 <p className="mb-6 text-sm leading-relaxed text-white/60 italic">"{t.quote}"</p>
@@ -561,9 +618,6 @@ const Landing = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <div className="mx-auto mb-8">
-              <Shield className="h-10 w-10 text-primary" strokeWidth={1} />
-            </div>
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-4">
               Ready to secure
               <span className="text-primary"> your fleet?</span>
@@ -600,7 +654,7 @@ const Landing = () => {
                 className="h-14 px-8 bg-primary hover:bg-primary/90 text-white rounded-xl shadow-lg shadow-primary/25 whitespace-nowrap"
               >
                 Get Started
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-5 w-5" strokeWidth={0.7} />
               </Button>
             </form>
 
